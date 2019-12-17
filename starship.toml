@@ -1,0 +1,24 @@
+add_newline = false
+
+[character]
+symbol = "➜" 
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[cmd_duration]
+min_time = 1
