@@ -33,3 +33,5 @@ chmod -R +x ./scripts
 ```bash
 ./scripts/zsh-setup.sh
 ```
+
+> Close and reopen terminal to let Oh My Zsh do its thing
