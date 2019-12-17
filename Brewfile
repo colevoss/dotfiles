@@ -10,6 +10,7 @@ brew "tmux"
 brew "starship"
 
 cask "iterm2"
+cask "docker"
 cask "fork"
 cask "spotify"
 cask "visual-studio-code"

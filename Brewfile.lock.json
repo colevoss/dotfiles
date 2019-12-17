@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "491e2fbd399d1467f3cfab7fe4c4f07b17bfab7f"
+        "revision": "d7f55b0a90c6870d1944599f8cd6104141523deb"
       },
       "homebrew/cask": {
-        "revision": "9d2deca0517c5a9f38ed756c115446845b196e74"
+        "revision": "5e45a67f0973fd2778f15b21ab56474c94d95c4f"
       },
       "homebrew/core": {
-        "revision": "45407c1d84e529770114ddda4927bf6cad3ebfad"
+        "revision": "cbf47cf3026f27b6b90fe6b23b7291732aeb5743"
       }
     },
     "brew": {
@@ -88,7 +88,7 @@
         "version": "latest"
       },
       "visual-studio-code": {
-        "version": "1.41.0"
+        "version": "1.40.2"
       },
       "iterm2": {
         "version": "3.3.7"
@@ -97,10 +97,13 @@
         "version": "0.0.255"
       },
       "react-native-debugger": {
-        "version": "0.10.2"
+        "version": "0.10.5"
       },
       "slack": {
         "version": "4.2.0"
+      },
+      "docker": {
+        "version": "2.1.0.5,40693"
       }
     }
   },
@@ -109,7 +112,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.2.1",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "71ef462f0f0f2ca5c0d5d69bbd690de14e3c8997",
+        "Homebrew/homebrew-core": "cbf47cf3026f27b6b90fe6b23b7291732aeb5743",
         "CLT": "11.3.0.0.1.1574140115",
         "Xcode": "11.2.1",
         "macOS": "10.15.1"
