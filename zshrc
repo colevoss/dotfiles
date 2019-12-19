@@ -29,6 +29,14 @@ source $ZSH/oh-my-zsh.sh
 
 DOTFILES="$HOME/dotfiles"
 
+# source $f
+
+for file in $DOTFILES/vars/**/*.vars.sh; do
+  source ${file} 
+done
+
+# source $DOTFILES/vars/other.private.vars.sh
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
