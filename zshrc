@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,6 +33,10 @@ DOTFILES="$HOME/dotfiles"
 
 for file in $DOTFILES/vars/**/*.vars.sh; do
   source ${file} 
+done
+
+for file in $DOTFILES/aliases/**/*.alias.sh; do
+  source ${file}
 done
 
 # source $DOTFILES/vars/other.private.vars.sh
@@ -54,3 +58,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cvoss/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cvoss/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cvoss/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cvoss/google-cloud-sdk/completion.zsh.inc'; fi
