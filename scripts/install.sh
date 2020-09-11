@@ -40,7 +40,8 @@ main() {
   fi
 
   if promptYn "Configure Tmux?"; then
-    $ROOT/tmux-setup.sh
+    # $ROOT/tmux-setup.sh
+    $ROOT/oh-my-tmux-setup.sh
   fi
 
   if promptYn "Install NVM?"; then
