@@ -24,8 +24,8 @@ setupZsh() {
   echo -e "Configuring ZSH"
   echo -e "=============================\n"
 
-  rm $HOME/.zshrc
-  ln -s ~/dotfiles/zshrc $HOME/.zshrc
+  # rm $HOME/.zshrc
+  ln -s ~/dotfiles/zsh/zshrc $HOME/.zshrc
 }
 
 installZshPlugins

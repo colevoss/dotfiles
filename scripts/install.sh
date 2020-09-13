@@ -52,6 +52,10 @@ main() {
     $ROOT/vscode-setup.sh
   fi
 
+  if promptYn "Configure Neovim"; then
+    $ROOT/nvim-setup.sh
+  fi
+
   echo "\n All done! You are good to go!"
 }
 
