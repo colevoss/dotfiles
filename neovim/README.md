@@ -28,7 +28,7 @@ so CoC can install its plugins.
 
 ## Plugins
 
-- _[Polyglot](https://github.com/sheerun/vim-polyglot)_ for better syntax highlighting
-- _[Auto Pairs](https://github.com/jiangmiao/auto-pairs)_ for quote and bracken auto closing
-- _[Dracula Theme](https://github.com/dracula/vim)_
-- _[CoC](https://github.com/neoclide/coc.vim)_ For a whole lot of language stuff
+- **[Polyglot](https://github.com/sheerun/vim-polyglot)** for better syntax highlighting
+- **[Auto Pairs](https://github.com/jiangmiao/auto-pairs)** for quote and bracken auto closing
+- **[Dracula Theme](https://github.com/dracula/vim)**
+- **[CoC](https://github.com/neoclide/coc.vim)** For a whole lot of language stuff
