@@ -3,6 +3,8 @@
 My Neovim set up is _heavily_ influenced by [Chris@Machine's](https://github.com/ChristianChiarulli/nvim) setup.
 You can find information about his set up on his [blog](https://www.chrisatmachine.com/neovim).
 
+![preview](https://github.com/colevoss/dotfiles/blob/master/assets/neovim.gif)
+
 ## Install Neovim
 
 ```bash
