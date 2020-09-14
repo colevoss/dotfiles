@@ -9,14 +9,14 @@ You can find information about his set up on his [blog](https://www.chrisatmachi
 brew install neovim
 ```
 
-## Intsall `vim-plug`
+## Intsall vim-plug
 
 ```bash
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-## Link `dotfiles/nvim` to `.config/nvim`
+## Link config files
 
 ```bash
 ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
