@@ -14,7 +14,7 @@ setupStarship() {
   echo -e "Setting up Starship"
   echo -e "=============================\n"
 
-  mkdir $HOME/.config # make config directory if necessary
+  # mkdir $HOME/.config # make config directory if necessary
   rm $HOME/.config/starship.toml
   ln -s $HOME/dotfiles/starship.toml $HOME/.config/starship.toml
 }

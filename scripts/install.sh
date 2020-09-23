@@ -48,6 +48,10 @@ main() {
     $ROOT/install-nvm.sh
   fi
 
+  if promptYn "Configure Alacritty?"; then
+    $ROOT/alacritty-setup.sh
+  fi
+
   if promptYn "Configure VSCode"; then
     $ROOT/vscode-setup.sh
   fi

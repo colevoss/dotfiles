@@ -55,6 +55,7 @@ For now this only sets up the iTerm theme
 ```bash
 ./scripts/install-nvm.sh
 ```
+
 > Make sure the NVM path is only in the `.zshrc` once. NVM install appends this
 > to `.zshrc` but it tries not to if it finds the path in there anyway. Worth making sure though.
 
@@ -68,3 +69,10 @@ This will prompt you for each step. You can install extensions and/or you copy s
 to VSCode's settings files.
 
 This also fixes the Vim Key repeat issue.
+
+## Exporting Brew
+
+```bash
+brew bundle dump file=$HOME/Brewfile.export
+mv $HOME/Brewfile.export $HOME/dotfiles/Brewfile
+```
