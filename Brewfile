@@ -16,7 +16,7 @@ brew "git"
 # Interpreted, interactive, object-oriented programming language
 # brew "python@3.8"
 # Asynchronous event library
-brew "libevent"
+# brew "libevent"
 
 # Add GitHub support to git on the command-line
 # brew "hub"
