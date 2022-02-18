@@ -73,6 +73,6 @@ if [ -f '/Users/colevoss/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/
 export GOPATH=$(go env GOPATH)
 
 export PATH=$PATH:$GOPATH/bin
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby-2.7.2
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
+# chruby ruby-2.7.2
