@@ -1,5 +1,20 @@
 add_newline = false
 
+format = """
+$username\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$nodejs\
+$rust\
+$memory_usage\
+$battery\
+$status\
+"""
+
 [character]
 symbol = "➜ " 
 
@@ -22,3 +37,6 @@ style = "bold red"
 
 [cmd_duration]
 min_time = 1
+
+[aws]
+format = ""
