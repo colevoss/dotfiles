@@ -7,7 +7,8 @@ installVimPlug() {
 
 setupNvim() {
   rm -rf $HOME/.config/nvim
-  ln -s $HOME/dotfiles/neovim $HOME/.config/nvim
+  # ln -s $HOME/dotfiles/neovim $HOME/.config/nvim
+  ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
 }
 
 instructions() {
@@ -25,6 +26,6 @@ EOF
   echo "Open vim with nvim and run :PlugInstall"
 }
 
-installVimPlug
+# installVimPlug
 setupNvim
 instructions
