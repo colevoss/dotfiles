@@ -5,7 +5,7 @@ createVimSession() {
 }
 
 createBashSession() {
-  tmux splitw -v -d -l 25%
+  tmux splitw -v -d -l 25% lazygit
 }
 
 startDevTime() {

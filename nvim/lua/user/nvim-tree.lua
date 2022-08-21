@@ -45,7 +45,7 @@ tree.setup({
   },
   view = {
     number = true,
-    width = 30,
+    width = 50,
     height = 30,
     side = "right",
     mappings = {
