@@ -11,5 +11,6 @@ bufferline.setup {
   options = {
     close_icon = "",
     buffer_close_icon = "",
+    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
   }
 }

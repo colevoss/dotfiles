@@ -54,3 +54,5 @@ keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references(require('t
 keymap("n", "<leader>gd", "<cmd>lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown())<cr>", opts)
 
 keymap("n", "<leader>t", ":TroubleToggle<CR>", opts)
+
+keymap("n", "<leader>ww", ":Bdelete %<CR>", opts)

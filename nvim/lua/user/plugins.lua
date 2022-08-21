@@ -76,10 +76,10 @@ return packer.startup(function()
   use {
     "akinsho/bufferline.nvim",
     require = {
-      'moll/vim-bbye',
       'kyazdani42/nvim-web-devicons', -- optional, for file icons
     }
   }
+  use { "moll/vim-bbye" }
 
   use {
     'nvim-lualine/lualine.nvim',

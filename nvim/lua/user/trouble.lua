@@ -6,5 +6,4 @@ if not status_ok then
 end
 
 trouble.setup {
-  auto_open = true
 }

@@ -30,9 +30,9 @@ tree.setup({
     dotfiles = false,
   },
   actions = {
-    open_file = {
-      quit_on_open = true,
-    },
+    --[[ open_file = { ]]
+    --[[   quit_on_open = true, ]]
+    --[[ }, ]]
   },
   diagnostics = {
     enable = true,

@@ -188,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/colevoss/.local/share/nvim/site/pack/packer/start/vim",
     url = "https://github.com/dracula/vim"
+  },
+  ["vim-bbye"] = {
+    loaded = true,
+    path = "/Users/colevoss/.local/share/nvim/site/pack/packer/start/vim-bbye",
+    url = "https://github.com/moll/vim-bbye"
   }
 }
 
