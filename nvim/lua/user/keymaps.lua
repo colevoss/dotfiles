@@ -47,12 +47,21 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.git_files()<cr>", opts)
-keymap("n", "<leader>p", "<cmd>lua require'telescope.builtin'.git_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>p",
+  "<cmd>lua require'telescope.builtin'.git_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", opts)
+keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>", opts)
+keymap("n", "<leader>fm", "<cmd>lua require'telescope.builtin'.marks()<cr>")
+keymap("n", "<leader>fr", "<cmd>lua require'telescope.builtin'.registers()<cr>")
+keymap("n", "<leader>fd", "<cmd>lua require'telescope.builtin'.diagnostics()<cr>")
 
-keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_dropdown())<cr>", opts)
-keymap("n", "<leader>gd", "<cmd>lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown())<cr>", opts)
+-- Trouble
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
+keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<CR>", opts)
+keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<CR>", opts)
 
-keymap("n", "<leader>t", ":TroubleToggle<CR>", opts)
 
+-- Close buffer
 keymap("n", "<leader>ww", ":Bdelete %<CR>", opts)

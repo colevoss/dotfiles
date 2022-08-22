@@ -5,6 +5,8 @@ if not status_ok then
   return
 end
 
+--[[ vim.api.nvim_exec("hi rainbowcolor3 guifg=#ffffff", true) ]]
+
 configs.setup {
   ensure_installed = { "lua", "go", "javascript", "typescript" },
 
@@ -25,4 +27,9 @@ configs.setup {
     enable = true,
     enable_autocmd = false,
   },
+  --[[ rainbow = { ]]
+  --[[   enable = true, ]]
+  --[[   extended_mode = true, ]]
+  --[[   max_file_lines = nil, ]]
+  --[[ }, ]]
 }

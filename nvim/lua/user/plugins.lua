@@ -94,6 +94,10 @@ return packer.startup(function()
   use { "lewis6991/gitsigns.nvim" }
 
   use { "jose-elias-alvarez/null-ls.nvim" }
-  
+
   use { "folke/trouble.nvim" }
+
+  use { "lukas-reineke/indent-blankline.nvim" }
+
+  use { "p00f/nvim-ts-rainbow" }
 end)
