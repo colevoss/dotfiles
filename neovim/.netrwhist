@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
-let g:netrw_dirhist_6='/Users/colevoss/roadtrip/mixtape-backend'
-let g:netrw_dirhist_5='/Users/colevoss/roadtrip/mixtape-backend/src/database'
-let g:netrw_dirhist_4='/Users/colevoss/roadtrip/mixtape-backend/src'
-let g:netrw_dirhist_3='/Users/colevoss/roadtrip/mixtape-backend'
-let g:netrw_dirhist_2='/Users/colevoss/codes/typescript-node-boilerplate/.git/hooks'
-let g:netrw_dirhist_1='/Users/colevoss/codes/typescript-node-boilerplate/.git'

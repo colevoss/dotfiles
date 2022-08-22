@@ -5,7 +5,7 @@ configureTmux() {
   echo -e "Configuring Tmux"
   echo -e "=============================\n"
 
-  ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+  ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 }
 
 configureTmux

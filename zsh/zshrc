@@ -63,6 +63,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/colevoss/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colevoss/google-cloud-sdk/path.zsh.inc'; fi
@@ -82,3 +83,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_COMPLETION_OPTS='--border --info=inline'
