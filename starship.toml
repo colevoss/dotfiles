@@ -1,22 +1,22 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = false
 
 format = """
-$username\
-$kubernetes\
+$battery\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
 $git_status\
 $nodejs\
+$golang\
 $rust\
-$memory_usage\
-$battery\
-$status\
 """
 
 [character]
-symbol = "➜ " 
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
 
 [battery]
 full_symbol = "🔋"
@@ -35,8 +35,11 @@ style = "bold yellow"
 threshold = 10
 style = "bold red"
 
-[cmd_duration]
-min_time = 1
+[golang]
+format = "[$symbol($version )]($style)"
 
-[aws]
-format = ""
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[rust]
+format = "[$symbol($version )]($style)"

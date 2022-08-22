@@ -1,20 +1,5 @@
+local navic = require("nvim-navic")
 local M = {}
-
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]] ,
-      false
-    )
-  end
-end
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -26,7 +11,7 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
-  -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 local lsp_flags = {
@@ -36,7 +21,12 @@ local lsp_flags = {
 
 local function on_attach(client, bufnr)
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  local status_ok, illumnate = pcall(require, 'illumnate')
+
+  if status_ok then
+    illumnate.on_attach(client)
+  end
+  navic.attach(client, bufnr)
 end
 
 M.on_attach = on_attach

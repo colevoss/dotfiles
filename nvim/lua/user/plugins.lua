@@ -79,6 +79,11 @@ return packer.startup(function()
       'kyazdani42/nvim-web-devicons', -- optional, for file icons
     }
   }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
   use { "moll/vim-bbye" }
 
   use {
@@ -100,4 +105,9 @@ return packer.startup(function()
   use { "lukas-reineke/indent-blankline.nvim" }
 
   use { "p00f/nvim-ts-rainbow" }
+
+  use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" }
+
+  use { 'matbme/JABS.nvim' }
+  --[[ use { 'ChristianChiarulli/JABS.nvim' } ]]
 end)

@@ -1,4 +1,5 @@
 local keymap = vim.keymap.set
+local telescope = require('telescope.builtin')
 local opts = {
   silent = true
 }
@@ -46,21 +47,34 @@ keymap("n", "<C-a>", "0", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.git_files()<cr>", opts)
+keymap("n", "<leader>ff", require('telescope.builtin').find_files, opts)
 keymap("n", "<leader>p",
-  "<cmd>lua require'telescope.builtin'.git_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  function()
+    require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
+  end,
   opts)
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", opts)
-keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>", opts)
-keymap("n", "<leader>fm", "<cmd>lua require'telescope.builtin'.marks()<cr>")
-keymap("n", "<leader>fr", "<cmd>lua require'telescope.builtin'.registers()<cr>")
-keymap("n", "<leader>fd", "<cmd>lua require'telescope.builtin'.diagnostics()<cr>")
+--[[ keymap("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", opts) ]]
+keymap("n", "<leader>ft", telescope.live_grep, opts)
+keymap("n", "gr", telescope.lsp_references, opts)
+keymap("n", "gd", telescope.lsp_definitions, opts)
+keymap("n", "<leader>fm", telescope.marks, opts)
+keymap("n", "<leader>fr", telescope.registers)
+keymap("n", "<leader>fd", telescope.diagnostics)
+keymap("n", "<leader>b",
+  function()
+    telescope.buffers(require('telescope.themes').get_dropdown({ previewer = false }))
+  end)
+
+keymap("n", "<leader>jb", require('jabs').open, opts)
 
 -- Trouble
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
 keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<CR>", opts)
 keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<CR>", opts)
+
+-- Comment
+--[[ keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts) ]]
+--[[ keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>') ]]
 
 
 -- Close buffer
