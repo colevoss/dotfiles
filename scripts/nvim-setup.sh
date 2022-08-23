@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-installVimPlug() {
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-}
-
 setupNvim() {
   rm -rf $HOME/.config/nvim
   # ln -s $HOME/dotfiles/neovim $HOME/.config/nvim
@@ -23,9 +18,9 @@ instructions() {
                                                 |_|
 EOF
 
-  echo "Open vim with nvim and run :PlugInstall"
+  # echo "Open vim with nvim and run :PlugInstall"
+  echo "Open vim with nvim and run :PackerInstall"
 }
 
-# installVimPlug
 setupNvim
 instructions

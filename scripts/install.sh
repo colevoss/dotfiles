@@ -40,8 +40,8 @@ main() {
   fi
 
   if promptYn "Configure Tmux?"; then
-    # $ROOT/tmux-setup.sh
-    $ROOT/oh-my-tmux-setup.sh
+    $ROOT/tmux-setup.sh
+    # $ROOT/oh-my-tmux-setup.sh
   fi
 
   if promptYn "Install NVM?"; then
@@ -71,15 +71,16 @@ main() {
 #   esac
 # done
 
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo "It looks like you have not install zsh, would you like to?"
-
-  select omzInstallAnswer in "Yes" "No"; do
-    case $omzInstallAnswer in
-      Yes ) stopToInstallZsh; break;;
-      No ) exit 0;;
-    esac
-  done
-fi
+# Dont isntall oh my zsh any more
+# if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+#   echo "It looks like you have not install zsh, would you like to?"
+#
+#   select omzInstallAnswer in "Yes" "No"; do
+#     case $omzInstallAnswer in
+#       Yes ) stopToInstallZsh; break;;
+#       No ) exit 0;;
+#     esac
+#   done
+# fi
 
 main
