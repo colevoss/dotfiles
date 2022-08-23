@@ -13,7 +13,7 @@ import:
 # available, otherwise `xterm-256color` is used.
 
 window:
-  opacity: 0.95
+  opacity: 0.9
   padding:
     x: 8
     y: 8

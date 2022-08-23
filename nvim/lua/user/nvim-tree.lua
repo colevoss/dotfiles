@@ -14,6 +14,34 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 -- OR setup with some options
 tree.setup({
+  renderer = {
+    root_folder_modifier = ":t",
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "U",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
   disable_netrw = true,
   hijack_netrw = true,
   update_focused_file = {
@@ -28,6 +56,7 @@ tree.setup({
   },
   filters = {
     dotfiles = false,
+    custom = { "^.git$" }
   },
   actions = {
     --[[ open_file = { ]]

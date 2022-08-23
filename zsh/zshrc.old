@@ -1,0 +1,88 @@
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+export ZSH_DISABLE_COMPFIX="true"
+
+# ZSH_THEME="dracula"
+
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions kubectl)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
+
+DOTFILES="$HOME/dotfiles"
+
+# Source environemtn variables from each file
+# in $DOTFILES/vars that has a .vars.sh file name
+for file in $DOTFILES/zsh/vars/**/*.vars.sh; do
+  source ${file}
+done
+
+# Source aliases from each file
+# in $DOTFILES/aliases that has a .alias.sh file name
+for file in $DOTFILES/zsh/aliases/**/*.alias.sh; do
+  source ${file}
+done
+
+alias reloadzsh="source $HOME/.zshrc"
+
+# ###########################
+# Set up NVM
+# ###########################
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+eval "$(starship init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/colevoss/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colevoss/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/colevoss/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colevoss/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GOPATH=$(go env GOPATH)
+
+export PATH=$PATH:$GOPATH/bin
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby ruby-2.7.2
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_COMPLETION_OPTS='--border --info=inline'
