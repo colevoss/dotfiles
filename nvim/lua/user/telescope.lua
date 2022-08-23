@@ -12,13 +12,20 @@ telescope.setup()
 
 telescope.setup {
   defaults = {
-
+    hidden = true,
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
     file_ignore_patterns = {
-      ".git/",
-      "node_modules"
+      "^.git/",
+      "node_modules",
     },
-  }
+  },
+  pickers = {
+    find_files = {
+      prompt_prefix = "🔍",
+      hidden = true,
+      command = "rg",
+    }
+  },
 }

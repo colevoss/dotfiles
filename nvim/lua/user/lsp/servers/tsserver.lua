@@ -5,9 +5,4 @@ end
 
 local handlers = require("user.lsp.handlers")
 
---[[ config.tsserver.setup { ]]
---[[   on_attach = handlers.on_attach, ]]
---[[   capabilities = handlers.capabilities, ]]
---[[ } ]]
-
 config.tsserver.setup(handlers)

@@ -16,12 +16,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = yankGrp,
 })
 
-local formatGroup = vim.api.nvim_create_augroup("FormatGroup", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre *", {
-  callback = vim.lsp.buf.formatting_sync,
-  group = formatGroup,
-})
-
 -- Fixes Autocomment
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()

@@ -73,12 +73,12 @@ return packer.startup(function()
     "neovim/nvim-lspconfig",
   }
 
-  use {
-    "akinsho/bufferline.nvim",
-    require = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    }
-  }
+  --[[ use { ]]
+  --[[   "akinsho/bufferline.nvim", ]]
+  --[[   require = { ]]
+  --[[     'kyazdani42/nvim-web-devicons', -- optional, for file icons ]]
+  --[[   } ]]
+  --[[ } ]]
 
   use {
     "SmiteshP/nvim-navic",

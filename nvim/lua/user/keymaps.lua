@@ -50,7 +50,8 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>ff", require('telescope.builtin').find_files, opts)
 keymap("n", "<leader>p",
   function()
-    require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
+    require('telescope.builtin').find_files(
+      require('telescope.themes').get_dropdown({ previewer = false, hidden = false }))
   end,
   opts)
 --[[ keymap("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", opts) ]]

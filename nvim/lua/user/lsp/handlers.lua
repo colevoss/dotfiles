@@ -11,7 +11,7 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
 end
 
 local lsp_flags = {
@@ -19,26 +19,48 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-local function on_attach(client, bufnr)
-  lsp_keymaps(bufnr)
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- apply whatever logic you want (in this example, we'll only use null-ls)
+      return client.name ~= "tsserver"
+    end,
+    bufnr = bufnr,
+  })
+end
+
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local function format_on_save(client, bufnr)
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        lsp_formatting(bufnr)
+      end
+    })
+  end
+end
+
+local function attach_illuminate(client)
   local status_ok, illumnate = pcall(require, 'illumnate')
 
   if status_ok then
     illumnate.on_attach(client)
   end
+end
+
+local function on_attach(client, bufnr)
   navic.attach(client, bufnr)
+  format_on_save(client, bufnr)
+  attach_illuminate(client)
+  lsp_keymaps(bufnr)
 end
 
 M.on_attach = on_attach
 M.lsp_flags = lsp_flags
-
---[[ M.on_attach = function(client, bufnr) ]]
---[[   if client.name == "tsserver" then ]]
---[[     client.resolved_capabilities.document_formatting = false ]]
---[[   end ]]
---[[   lsp_keymaps(bufnr) ]]
---[[   lsp_highlight_document(client) ]]
---[[ end ]]
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 

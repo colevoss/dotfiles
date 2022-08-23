@@ -1,56 +1,7 @@
-local navic = require("nvim-navic")
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
 end
-
-
-navic.setup {
-  icons = {
-    File          = " ",
-    Module        = " ",
-    Namespace     = " ",
-    Package       = " ",
-    Class         = " ",
-    Method        = " ",
-    Property      = " ",
-    Field         = " ",
-    Constructor   = " ",
-    Enum          = "練",
-    Interface     = "練",
-    Function      = " ",
-    Variable      = " ",
-    Constant      = " ",
-    String        = " ",
-    Number        = " ",
-    Boolean       = "◩ ",
-    Array         = " ",
-    Object        = " ",
-    Key           = " ",
-    Null          = "ﳠ ",
-    EnumMember    = " ",
-    Struct        = " ",
-    Event         = " ",
-    Operator      = " ",
-    TypeParameter = " ",
-  },
-  highlight = false,
-  separator = " > ",
-  depth_limit = 0,
-  depth_limit_indicator = "..",
-}
-
--- This won't work until nvim 0.8
--- ThIS ISNT READY YET
--- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-local winbar = {
-  lualine_a = {
-    {
-      navic.get_location, cond = navic.is_available
-    }
-  }
-}
-
 
 local diagnostics = {
   "diagnostics",
@@ -127,6 +78,5 @@ lualine.setup({
   },
   tabline = {
   },
-  winbar,
   extensions = {},
 })
