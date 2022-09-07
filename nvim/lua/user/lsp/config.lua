@@ -10,13 +10,16 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-  virtual_text = true,
+  --[[ virtual_text = { ]]
+  --[[   source = "if_any" ]]
+  --[[ }, ]]
+  virtual_text = false,
   -- show signs
   signs = {
     active = signs,
   },
   update_in_insert = true,
-  underline = true,
+  underline = false,
   severity_sort = true,
   float = {
     focusable = true,

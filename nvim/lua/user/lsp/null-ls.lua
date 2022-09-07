@@ -3,7 +3,7 @@ if not null_ls_status_ok then
   return
 end
 
-local handlers = require("user.lsp.handlers")
+--[[ local handlers = require("user.lsp.handlers") ]]
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
@@ -19,6 +19,7 @@ null_ls.setup({
     --[[ formatting.eslint_d, ]]
     diagnostics.eslint_d,
     formatting.prettierd,
+    formatting.gofmt,
   },
 
   --[[ on_attach = handlers.on_attach, ]]

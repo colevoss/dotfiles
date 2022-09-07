@@ -10,5 +10,6 @@ alias zdt="$HOME/dotfiles/scripts/blank-desktop.sh"
 alias fdt="$HOME/dotfiles/scripts/full-desktop.sh"
 
 alias nv='nvim'
+alias tm='tmux'
 
 alias reloadzsh="source $HOME/.zshrc"

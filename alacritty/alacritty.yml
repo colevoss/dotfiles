@@ -13,7 +13,8 @@ import:
 # available, otherwise `xterm-256color` is used.
 
 window:
-  opacity: 0.9
+  # opacity: 0.95
+  opacity: 0.98
   padding:
     x: 8
     y: 8
@@ -22,7 +23,7 @@ window:
 
 font:
   offset:
-    y: 8
+    y: 10
     x: 1
   use_thin_strokes: true
   normal:

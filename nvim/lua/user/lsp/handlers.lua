@@ -1,17 +1,20 @@
 local navic = require("nvim-navic")
 local M = {}
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
+
+  if client.supports_method("textDocument/codeAction") then
+    vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  end
 end
 
 local lsp_flags = {
@@ -23,7 +26,13 @@ local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
       -- apply whatever logic you want (in this example, we'll only use null-ls)
-      return client.name ~= "tsserver"
+      if client.name == 'tsserver' then
+        return false
+        --[[ elseif client.name == 'gopls' then ]]
+        --[[   return false ]]
+      else
+        return true
+      end
     end,
     bufnr = bufnr,
   })
@@ -52,11 +61,32 @@ local function attach_illuminate(client)
   end
 end
 
+local hoverGroup = vim.api.nvim_create_augroup("LspOnHover", {})
+local function show_on_cursor(bufnr)
+  vim.api.nvim_clear_autocmds({ group = hoverGroup, buffer = bufnr })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    group = hoverGroup,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
+end
+
 local function on_attach(client, bufnr)
   navic.attach(client, bufnr)
   format_on_save(client, bufnr)
   attach_illuminate(client)
-  lsp_keymaps(bufnr)
+  lsp_keymaps(client, bufnr)
+  --[[ show_on_cursor(bufnr) ]]
 end
 
 M.on_attach = on_attach

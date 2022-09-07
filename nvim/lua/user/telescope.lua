@@ -14,7 +14,7 @@ telescope.setup {
   defaults = {
     hidden = true,
     prompt_prefix = " ",
-    selection_caret = " ",
+    selection_caret = "契",
     path_display = { "smart" },
     file_ignore_patterns = {
       "^.git/",

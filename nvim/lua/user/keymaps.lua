@@ -65,6 +65,7 @@ keymap("n", "<leader>b",
   function()
     telescope.buffers(require('telescope.themes').get_dropdown({ previewer = false }))
   end)
+keymap("n", "<leader>fs", telescope.lsp_document_symbols)
 
 keymap("n", "<leader>jb", require('jabs').open, opts)
 
@@ -79,4 +80,4 @@ keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<CR>", opts)
 
 
 -- Close buffer
-keymap("n", "<leader>ww", ":Bdelete %<CR>", opts)
+keymap("n", "<leader>bd", ":Bdelete %<CR>", opts)

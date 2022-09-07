@@ -6,7 +6,7 @@ if not status_ok then
 end
 
 configs.setup {
-  ensure_installed = { "lua", "go", "javascript", "typescript" },
+  ensure_installed = { "lua", "go", "javascript", "typescript", "graphql", "rust" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
