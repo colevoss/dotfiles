@@ -13,3 +13,5 @@ alias nv='nvim'
 alias tm='tmux'
 
 alias reloadzsh="source $HOME/.zshrc"
+
+alias codes="cd $HOME/codes"

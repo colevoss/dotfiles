@@ -10,10 +10,10 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-  --[[ virtual_text = { ]]
-  --[[   source = "if_any" ]]
-  --[[ }, ]]
-  virtual_text = false,
+  virtual_text = {
+    source = "if_any"
+  },
+  --[[ virtual_text = false, ]]
   -- show signs
   signs = {
     active = signs,

@@ -5,10 +5,10 @@ if not status_ok then
   return
 end
 
-local actions = require("telescope.actions")
-local trouble = require("trouble")
+--[[ local actions = require("telescope.actions") ]]
+--[[ local trouble = require("trouble") ]]
 
-telescope.setup()
+--[[ telescope.setup() ]]
 
 telescope.setup {
   defaults = {
