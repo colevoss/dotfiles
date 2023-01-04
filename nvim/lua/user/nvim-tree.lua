@@ -17,6 +17,10 @@ tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
   hijack_cursor = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = false,
+  },
   view = {
     number = true,
     width = 50,

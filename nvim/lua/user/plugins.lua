@@ -111,6 +111,8 @@ return packer.startup(function()
     'windwp/nvim-autopairs'
   }
 
+  use { "RRethy/vim-illuminate" }
+
   if packer_bootstrap then
     requires = {
       'nvim-tree/nvim-web-devicons'
