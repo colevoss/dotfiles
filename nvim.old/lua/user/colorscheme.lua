@@ -2,9 +2,10 @@
 local transparent_status, _ = pcall(vim.cmd, "let g:dracula_colorterm = 0")
 
 if not transparent_status then
-  vim.notify("Could not set dracula_colorterm = 0")
+  vim.notify("could not set dracula_colorterm = 0")
 end
 
+-- set color scheme to dracula
 local colorscheme = "dracula"
 local colorscheme_status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 

@@ -1,7 +1,7 @@
-local status_ok, tree = pcall(require, "nvim-tree")
+local nvim_tree_ok, tree = pcall(require, "nvim-tree")
 
-if not status_ok then
-  vim.notify("Could not load nvim-tree")
+if not nvim_tree_ok then
+  vim.notify("Could not load nvim-tree.lua")
   return
 end
 
@@ -11,9 +11,24 @@ if not config_status_ok then
 end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
+local keymap = vim.keymap.set
 
--- OR setup with some options
-tree.setup({
+tree.setup {
+  disable_netrw = true,
+  hijack_netrw = true,
+  hijack_cursor = true,
+  view = {
+    number = true,
+    width = 50,
+    side = "right",
+    mappings = {
+      list = {
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "v", cb = tree_cb "vsplit" },
+      },
+    },
+  },
   renderer = {
     root_folder_modifier = ":t",
     icons = {
@@ -40,50 +55,14 @@ tree.setup({
           ignored = "◌",
         },
       },
-    },
-  },
-  disable_netrw = true,
-  hijack_netrw = true,
-  update_focused_file = {
-    enable = true,
-    --[[ update_cwd = true, ]]
-    update_cwd = false,
-  },
-  hijack_cursor = true,
-  sort_by = "case_sensitive",
-  hijack_directories = {
-    enable = true,
-    auto_open = true,
-  },
-  filters = {
-    dotfiles = false,
-    custom = { "^.git$" }
-  },
-  actions = {
-    --[[ open_file = { ]]
-    --[[   quit_on_open = true, ]]
-    --[[ }, ]]
-  },
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
-  },
-  view = {
-    number = true,
-    width = 50,
-    height = 30,
-    side = "right",
-    mappings = {
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
-    },
+    }
   }
-})
+}
+
+-- @see https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes
+keymap("n", "<leader>e",
+  function()
+    tree.toggle()
+  end,
+  { silent = true }
+)
