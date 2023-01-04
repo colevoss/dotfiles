@@ -64,3 +64,13 @@ zsh_add_plugin "hlissner/zsh-autopair"
 
 bindkey -s '^n' 'nvim .^M'
 
+
+# source /Users/colevoss/.config/broot/launcher/bash/br
+# if [ -f '/Users/colevoss/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colevoss/google-cloud-sdk/path.zsh.inc'; fi
+#
+# # bun completions
+# [ -s "/Users/colevoss/.bun/_bun" ] && source "/Users/colevoss/.bun/_bun"
+#
+# # bun
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"

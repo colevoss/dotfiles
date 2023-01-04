@@ -83,6 +83,8 @@ keymap("n", "<leader>b",
   end, opts)
 keymap("n", "<leader>fs", telescope.lsp_document_symbols)
 keymap("n", "<leader>tr", telescope.resume)
+
+-- Jabs: Buffer closer ui
 keymap("n", "<leader>jb", require('jabs').open, opts)
 
 -- Trouble

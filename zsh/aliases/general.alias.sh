@@ -14,4 +14,9 @@ alias tm='tmux'
 
 alias reloadzsh="source $HOME/.zshrc"
 
+## Directory shortcuts
 alias codes="cd $HOME/codes"
+alias df="cd $HOME/dotfiles"
+alias home="cd $HOME"
+
+alias ndf="nvim $HOME/dotfiles"
