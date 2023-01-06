@@ -16,6 +16,8 @@ function M.setup()
 
   local tree_cb = nvim_tree_config.nvim_tree_callback
 
+  -- vim.api.nvim_set_hl(0, "NvimTreeNormal", { default = true, bg = "#416639" })
+
   tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
@@ -24,10 +26,24 @@ function M.setup()
       enable = true,
       update_cwd = false,
     },
+    hijack_directories = {
+      enable = true,
+      auto_open = true,
+    },
+    diagnostics = {
+      enable = true,
+      icons = {
+        hint = "",
+        info = "",
+        warning = "",
+        error = "",
+      },
+    },
     view = {
-      number = true,
+      -- number = true,
       width = 50,
       side = "right",
+      signcolumn = "yes",
       mappings = {
         list = {
           { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
@@ -38,6 +54,17 @@ function M.setup()
     },
     renderer = {
       root_folder_modifier = ":t",
+      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "package.json" },
+      highlight_opened_files = 'icon',
+      indent_markers = {
+        enable = true,
+        icons = {
+          corner = "└",
+          edge = "│",
+          item = "│",
+          none = " ",
+        },
+      },
       icons = {
         glyphs = {
           default = "",

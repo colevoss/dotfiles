@@ -12,7 +12,10 @@ function M.setup()
   vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
   vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
   vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-  vim.opt.hlsearch = true -- highlight all matches on previous search pattern
+
+  vim.opt.hlsearch = false -- highlight all matches on previous search pattern
+  vim.opt.incsearch = true -- highlight all matches on previous search pattern
+
   vim.opt.ignorecase = true -- ignore case in search patterns
   vim.opt.mouse = "a" -- allow the mouse to be used in neovim
   vim.opt.pumheight = 10 -- pop up menu height
@@ -44,9 +47,12 @@ function M.setup()
   vim.opt.wrap = false -- display lines as one long line
   vim.opt.scrolloff = 8 -- is one of my fav
   vim.opt.sidescrolloff = 8
-  vim.opt.fillchars.eob = " "
+  vim.opt.fillchars = { eob = " " }
 
-  vim.g.linespace = 8
+  -- vim.opt.colorcolumn = '80'
+  vim.opt.signcolumn = "yes"
+
+  vim.g.linespace = 10
 
   -- Not sure what these are
   vim.opt.shortmess:append "c"

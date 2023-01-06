@@ -18,6 +18,7 @@ M.setup = function()
 
   -- Colon Shortcut
   remap.nmap(";", ":", "Colon works as semicolon", false)
+  remap.nmap(":", ";", "Semicolon works as colon", false)
 
   -- Save Shortcut
   remap.nmap("<leader>w", ":w<CR>", "Leader + W save shortcut", false)
@@ -49,6 +50,8 @@ M.setup = function()
   -- Stay in indent mode
   remap.vmap("<", "<gv", "Indent left", true)
   remap.vmap(">", ">gv", "Indent right", true)
+
+  remap.keymap("x", "<leader>p", "\"_dp")
 end
 
 return M
