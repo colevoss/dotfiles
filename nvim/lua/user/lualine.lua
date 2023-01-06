@@ -1,7 +1,4 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-  return
-end
+local M = {}
 
 local diagnostics = {
   "diagnostics",
@@ -47,36 +44,46 @@ local location = {
   "location",
 }
 
-local spaces = function()
-  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+function M.setup()
+  local status_ok, lualine = pcall(require, "lualine")
+  if not status_ok then
+    return
+  end
+
+
+  local spaces = function()
+    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  end
+
+  lualine.setup({
+    options = {
+      icons_enabled = true,
+      theme = "auto",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+      disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt" },
+      always_divide_middle = true,
+    },
+    sections = {
+      lualine_a = { mode },
+      lualine_b = { branch },
+      lualine_c = { filename, betterfiletype, diagnostics },
+      lualine_x = { "diff", spaces, "encoding" },
+      lualine_y = { location },
+      lualine_z = { filetype },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    },
+    tabline = {
+    },
+    extensions = {},
+  })
 end
 
-lualine.setup({
-  options = {
-    icons_enabled = true,
-    theme = "auto",
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-    disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt" },
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = { mode },
-    lualine_b = { branch },
-    lualine_c = { filename, betterfiletype, diagnostics },
-    lualine_x = { "diff", spaces, "encoding" },
-    lualine_y = { location },
-    lualine_z = { filetype },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {
-  },
-  extensions = {},
-})
+return M

@@ -14,7 +14,7 @@ local ensure_packer = function()
     }
 
     print "Installing packer close and reopen Neovim..."
-    vim.cmd [[packadd packer.nvim]]
+    vim.cmd([[packadd packer.nvim]])
 
     return true
   end
@@ -25,12 +25,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
-]]
+]])
 
 -- Use a protected call so we don't error out on first use
 local packer_ok, packer = pcall(require, "packer")
@@ -51,9 +51,6 @@ return packer.startup(function()
   -- Have packer manage itself
   use { 'wbthomason/packer.nvim' }
 
-  -- "All the lua functions I don't want to write twice."
-  use { 'nvim-lua/plenary.nvim' }
-
   -- Theme
   use { 'dracula/vim' }
 
@@ -69,13 +66,38 @@ return packer.startup(function()
   -- TreeSitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
   }
 
   -- LSP
   use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+    requires = {
+      -- LSP Installer
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+
+      -- Useful status updates for LSP
+      'j-hui/fidget.nvim',
+
+      -- Additional lua configuration, makes nvim stuff amazing
+      'folke/neodev.nvim',
+    }
+  }
+
+  -- CMP
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+    }
   }
 
   -- Telescope
@@ -111,12 +133,35 @@ return packer.startup(function()
     'windwp/nvim-autopairs'
   }
 
-  use { "RRethy/vim-illuminate" }
+  use {
+    'lukas-reineke/indent-blankline.nvim'
+  }
+
+  use {
+    'RRethy/vim-illuminate'
+  }
+
+  use {
+    'numToStr/Comment.nvim'
+  }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
+  use {
+    'rcarriga/nvim-notify'
+  }
 
   if packer_bootstrap then
-    requires = {
-      'nvim-tree/nvim-web-devicons'
-    }
     packer.sync()
   end
 end)

@@ -1,9 +1,10 @@
 export DOTFILES="$HOME/dotfiles"
 export ZSH_CONFIG="$DOTFILES/zsh"
+export ZSH_PLUGIN_DIR="$HOME/.zsh"
+
 
 HISTFILE=~/.zsh_history
 setopt appendhistory
-
 
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
@@ -11,68 +12,63 @@ setopt interactive_comments
 stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
-
-
 # beeping is annoying
 unsetopt BEEP
 
 # completions
-# autoload -Uz compinit && compinit
-# autoload -Uz vcs_info
-# zstyle ':completion:*' menu select
-# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-# zstyle ':completion::complete:lsof:*' menu yes select
 # zmodload zsh/complist
-# compinit
+# autoload -Uz compinit; compinit
+# zstyle ':completion:*' completer _extensions _complete _approximate
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+# zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+# zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+# zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions commands
+# zstyle ':completion:*' file-list all
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # _comp_options+=(globdots)		# Include hidden files.
 
-# autoload -U up-line-or-beginning-search
-# autoload -U down-line-or-beginning-search
-# zle -N up-line-or-beginning-search
-# zle -N down-line-or-beginning-search
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^v' edit-command-line
 
-# autoload -U add-zsh-hook
 
-# source "$ZSH_CONFIG/zsh-functions"
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-# zsh_add_file "setup-nvm"
+autoload -U add-zsh-hook
 
 # Source environemtn variables from each file
 # in $DOTFILES/vars that has a .vars.sh file name
-for file in $ZSH_CONFIG/vars/**/*.vars.sh; do
+echo -e "Loading vars from:"
+for file in $ZSH_CONFIG/vars/**/*.vars.zsh; do
+  echo -e "  -> ${file}"
   source ${file}
 done
 
 # Source aliases from each file
 # in $DOTFILES/aliases that has a .alias.sh file name
-for file in $ZSH_CONFIG/aliases/**/*.alias.sh; do
+echo -e "Loading aliases from:"
+for file in $ZSH_CONFIG/aliases/**/*.alias.zsh; do
+  echo -e "  -> ${file}"
   source ${file}
 done
 
-# Start starship
-eval "$(starship init zsh)"
+echo -e "Loading plugins from:"
+for file in $ZSH_CONFIG/plugins/**/*.plugin.zsh; do
+  echo -e "  -> ${file}"
+  source ${file}
+done
 
-# Useful functions
-# source "$ZSH_CONFIG/zsh-functions"
+echo -e "Loading bindings from:"
+for file in $ZSH_CONFIG/bindings/**/*.bindings.zsh; do
+  echo -e "  -> ${file}"
+  source ${file}
+done
 
-# zsh_add_file "setup-nvm"
-# zsh_add_file "zsh-vim-mode"
-
-# zsh_add_plugin "zsh-users/zsh-autosuggestions"
-# zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-# zsh_add_plugin "hlissner/zsh-autopair"
-
-bindkey -s '^n' 'nvim .^M'
-
-
-# source /Users/colevoss/.config/broot/launcher/bash/br
-# if [ -f '/Users/colevoss/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colevoss/google-cloud-sdk/path.zsh.inc'; fi
-#
-# # bun completions
-# [ -s "/Users/colevoss/.bun/_bun" ] && source "/Users/colevoss/.bun/_bun"
-#
-# # bun
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH="$BUN_INSTALL/bin:$PATH"
-
-source "$ZSH_CONFIG/setup-nvm"
+# Keep this at the bottom
+source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

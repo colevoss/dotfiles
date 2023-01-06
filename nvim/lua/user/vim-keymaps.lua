@@ -1,47 +1,54 @@
-local keymap = vim.keymap.set
-local opts = {
-  silent = true
-}
+local remap = require('user.util.remap')
 
--- Remap Space to leader
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local M = {}
 
--- Colon Shortcut
-keymap("n", ";", ":")
+M.setup = function()
+  -- Remap Space to leader
+  remap.keymap("", "<Space>", "<Nop>", {
+    silent = true,
+    desc = "Space as leader"
+  })
 
--- Save Shortcut
-keymap("n", "<leader>w", ":w<CR>")
+  vim.g.mapleader = " "
+  vim.g.maplocalleader = " "
 
-------------------------
--- Normal
-------------------------
+  ------------------------
+  -- Normal
+  ------------------------
 
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+  -- Colon Shortcut
+  remap.nmap(";", ":", "Colon works as semicolon", false)
 
--- In buffer nav
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+  -- Save Shortcut
+  remap.nmap("<leader>w", ":w<CR>", "Leader + W save shortcut", false)
 
--- Previous and next buffers
-keymap("n", "<C-p>", ":bprevious<CR>", opts)
-keymap("n", "<C-n>", ":bnext<CR>", opts)
+  -- Better window navigation
+  remap.nmap("<C-h>", "<C-w>h", "<C-h> to navigate to left pane", true)
+  remap.nmap("<C-j>", "<C-w>j", "<C-j> to navigate to down pane", true)
+  remap.nmap("<C-k>", "<C-w>k", "<C-k> to navigate to up pane", true)
+  remap.nmap("<C-l>", "<C-w>l", "<C-l> to navigate to right pane", true)
 
-------------------------
--- Visual
-------------------------
+  -- In buffer nav
+  remap.nmap("<C-d>", "<C-d>zz", "Navigate down and center", true)
+  remap.nmap("<C-u>", "<C-u>zz", "Navigate up and center", true)
 
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+  -- Previous and next buffers
+  remap.nmap("<C-p>", ":bprevious<CR>", "Go to previous buffer", true)
+  remap.nmap("<C-n>", ":bnext<CR>", "Go to next buffer", true)
 
--- Better full line yank
-keymap("n", "<S-y>", "<S-v>y", opts)
+  -- Better full line yank
+  remap.nmap("<S-y>", "<S-v>y", "Better full line yank", true)
 
--- Move to start or end of line
-keymap("n", "<C-e>", "$", opts)
+  -- Move to start or end of line
+  remap.nmap("<C-e>", "$", "Move to start or end of line", true)
+
+  ------------------------
+  -- Visual
+  ------------------------
+
+  -- Stay in indent mode
+  remap.vmap("<", "<gv", "Indent left", true)
+  remap.vmap(">", ">gv", "Indent right", true)
+end
+
+return M

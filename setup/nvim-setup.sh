@@ -22,5 +22,18 @@ EOF
   echo "Open vim with nvim and run :PackerInstall"
 }
 
+attemptNpmPackageInstalls() {
+  if [ ! command -v npm &> /dev/null]; then
+    echo -e "!!!!!!!!!!!!!!!!!!"
+    echo -e "npm is not install. Cannot install nvim dependencies"
+    echo -e "!!!!!!!!!!!!!!!!!!"
+
+    return 1
+  fi
+
+  npm install -g eslint_d @fsouza/prettierd
+}
+
 setupNvim
+attemptNpmPackageInstalls
 instructions

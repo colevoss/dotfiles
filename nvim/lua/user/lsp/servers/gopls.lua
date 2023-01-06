@@ -1,0 +1,3 @@
+local gopls = {}
+
+return gopls
