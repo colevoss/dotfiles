@@ -1,10 +1,5 @@
 local M = {}
 
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
@@ -35,6 +30,11 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+local has_words_before = function()
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+
 function M.setup()
   local cmp_status_ok, cmp = pcall(require, "cmp")
   if not cmp_status_ok then
@@ -55,22 +55,14 @@ function M.setup()
       end
     },
     window = {
-      completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       ["<C-j>"] = cmp.mapping.select_next_item(),
-      ["<CR>"] = function(fallback)
+      ["<C-Space>"] = function(fallback)
         if cmp.visible() then
           cmp.confirm({ select = true })
-        else
-          fallback()
-        end
-      end,
-      ["<Tab>"] = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
         else
           fallback()
         end
@@ -79,6 +71,25 @@ function M.setup()
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
+      ['<Tab>'] = function(fallback)
+        if not cmp.select_next_item() then
+          if vim.bo.buftype ~= 'prompt' and has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end
+      end,
+
+      ['<S-Tab>'] = function(fallback)
+        if not cmp.select_prev_item() then
+          if vim.bo.buftype ~= 'prompt' and has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end
+      end,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },

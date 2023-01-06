@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "0b4e3b38535d1c93f27df1130b2d1369c1b6c61c"
+        "revision": "cd7c67efc93cf047ddb63f7c578b05fac76991d5"
       }
     },
     "cask": {
@@ -101,6 +101,18 @@
         "options": {
           "full_name": "docker"
         }
+      },
+      "amethyst": {
+        "version": "0.16.0",
+        "options": {
+          "full_name": "amethyst"
+        }
+      },
+      "postman": {
+        "version": "10.6.0",
+        "options": {
+          "full_name": "postman"
+        }
       }
     },
     "brew": {
@@ -161,7 +173,7 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.17",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "5a84036ee3b29a42f0e074c81d64335529e13787",
+        "Homebrew/homebrew-core": "897c84426092eacadf47bdd0d088d9c331b6ff22",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"

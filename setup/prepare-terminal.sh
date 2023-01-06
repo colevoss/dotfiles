@@ -40,6 +40,7 @@ setupZsh() {
   echo -e "\nDownloading ZSH Syntax Highlighting...\n"
   rm -rf $HOME/.zsh/zsh-syntax-highlighting
   git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+  git clone https://github.com/dracula/zsh-syntax-highlighting.git $HOME/.zsh/dracula/zsh-syntax-highlighting
 
   # Auto suggestions
   echo -e "\nDownloading ZSH Autosuggestions...\n"

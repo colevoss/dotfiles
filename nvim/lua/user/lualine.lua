@@ -24,7 +24,7 @@ local mode_colors = {
 local mode = {
   "mode",
   icons_enabled = true,
-  fmt = function(str, ctx)
+  fmt = function(str)
     return str
   end,
   color = function()
@@ -93,7 +93,6 @@ function M.setup()
   lualine.setup({
     options = {
       icons_enabled = true,
-      -- theme = "auto",
       theme = {
         normal = {
           a = 'auto',
@@ -109,7 +108,6 @@ function M.setup()
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt" },
       always_divide_middle = false,
-      -- globalstatus = true,
     },
     sections = {
       lualine_a = { mode },

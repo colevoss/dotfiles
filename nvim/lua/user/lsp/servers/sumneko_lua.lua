@@ -1,7 +1,19 @@
 local sumneko_lua = {
   Lua = {
-    workspace = { checkThirdParty = false },
-    telemetry = { enable = false }
+    runtime = {
+      version = 'LuaJIT'
+    },
+    workspace = {
+      library = vim.api.nvim_get_runtime_file("", true),
+      checkThirdParty = false,
+    },
+    telemetry = { enable = false },
+    diagnostics = {
+      globals = {
+        'vim',
+        'use'
+      }
+    }
   }
 }
 

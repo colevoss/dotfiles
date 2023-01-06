@@ -5,6 +5,9 @@ brew "mas"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 
+# Automatic tiling window manager similar to xmonad
+cask "amethyst"
+
 # GPU-accelerated terminal emulator
 cask "alacritty"
 
@@ -36,6 +39,9 @@ cask "obs"
 
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+
+# Collaboration platform for API development
+cask "postman"
 
 # Team communication and collaboration software
 cask "slack"

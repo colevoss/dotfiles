@@ -41,6 +41,21 @@ function M.setup()
       }
     }
   }
+
+  -- local ts_context_ok, ts_context = pcall(require, 'treesitter-context')
+  --
+  -- if not ts_context_ok then
+  --   vim.notify('Could not load treesitter context')
+  --   return
+  -- end
+
+  -- ts_context.setup {
+  --   mode = 'cursor'
+  -- }
+
+  -- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "NONE", italic = true })
+  -- vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { fg = "#50fa7b" })
+  -- vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, sp = "#50fa7b" })
 end
 
 return M

@@ -71,4 +71,5 @@ for file in $ZSH_CONFIG/bindings/**/*.bindings.zsh; do
 done
 
 # Keep this at the bottom
+source $ZSH_PLUGIN_DIR/dracula/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -2,8 +2,8 @@
 
 add_newline = false
 
+# $battery\
 format = """
-$battery\
 $directory\
 $git_branch\
 $git_commit\
@@ -15,8 +15,14 @@ $rust\
 """
 
 [character]
-success_symbol = "[➜](bold green) "
-error_symbol = "[✗](bold red) "
+success_symbol = "[➜](bold #ff5555) "
+error_symbol = "[✗](bold #50fa7b) "
+
+[git_branch]
+style = "bold #bd93f9"
+
+[git_status]
+style = "bold #ff5555"
 
 [battery]
 full_symbol = "🔋"
@@ -25,15 +31,15 @@ discharging_symbol = "💀 "
 
 [[battery.display]]
 threshold = 100
-style = "bold green"
+style = "bold #50fa7b"
 
 [[battery.display]]
 threshold = 30
-style = "bold yellow"
+style = "bold #f1fa8c"
 
 [[battery.display]]
 threshold = 10
-style = "bold red"
+style = "bold #ff5555"
 
 [golang]
 format = "[$symbol($version )]($style)"
