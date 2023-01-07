@@ -1,17 +1,9 @@
-local status_ok, _ = pcall(require, "lspconfig")
+local M = {}
 
-if not status_ok then
-  return
+function M.setup()
+  require("user.lsp.config").setup()
+  require("user.lsp.mason").setup()
+  require("user.lsp.null-ls").setup()
 end
 
-require("user.lsp.lsp-installer")
-require("user.lsp.config")
-
-require("user.lsp.null-ls")
-require("user.lsp.servers.tsserver")
-require("user.lsp.servers.sumneko_lua")
-require("user.lsp.servers.gopls")
-require("user.lsp.servers.rust")
-require("user.lsp.servers.terraform")
-
---[[ require("user.lsp.lspsaga"); ]]
+return M

@@ -1,4 +1,14 @@
-vim.g.Illuminate_ftblacklist = { 'NvimTree' }
-vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>',
-  { noremap = true })
+local M = {}
+
+function M.setup()
+  local status_ok, illuminate = pcall(require, "illuminate")
+
+  if not status_ok then
+    vim.notify("Could not load vim-illuminate")
+    return
+  end
+
+  illuminate.configure {}
+end
+
+return M

@@ -1,19 +1,28 @@
-require "user.keymaps"
-require "user.options"
-require "user.plugins"
-require "user.colorscheme"
-require "user.treesitter"
-require "user.nvim-tree"
-require "user.cmp"
-require "user.autopairs"
-require "user.comments"
-require "user.telescope"
-require "user.gitsigns"
-require "user.lsp"
--- require "user.bufferline"
-require "user.winbar"
-require "user.lualine"
-require "user.trouble"
-require "user.auto-cmd"
-require "user.blankline"
-require "user.jabs"
+-- Install all plugins first
+-- Plugins doesnt run setup
+require("user.plugins")
+
+
+-- Basic setup
+require("user.options").setup()
+require("user.vim-keymaps").setup()
+
+require('user.notify').setup()
+
+-- Plugin setups
+require("user.colorscheme").setup()
+require("user.icons").setup()
+require("user.lsp").setup()
+require("user.cmp").setup()
+require("user.nvim-tree").setup()
+require("user.treesitter").setup()
+require("user.telescope").setup()
+require("user.lualine").setup()
+require("user.trouble").setup()
+require("user.gitsigns").setup()
+require("user.autopairs").setup()
+require("user.illuminate").setup()
+require("user.indent-blankline").setup()
+require("user.comment").setup()
+require("user.navic").setup()
+require("user.auto-commands").setup()

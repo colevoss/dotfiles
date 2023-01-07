@@ -25,7 +25,7 @@ font:
   offset:
     y: 10
     x: 1
-  use_thin_strokes: true
+  # use_thin_strokes: true
   normal:
     family: Hack Nerd Font Mono
     style: Regular
