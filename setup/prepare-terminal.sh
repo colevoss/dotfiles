@@ -92,8 +92,31 @@ setupLf() {
   curl https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh -o ~/.config/lf/lfcd.sh
 }
 
+setupDelta() {
+  echo -e "\n============================="
+  echo -e "Setting up Git Delta"
+  echo -e "=============================\n"
+
+  git config --global core.pager "delta"
+  git config --global interactive.diffFilter "delta --color-only"
+  git config --global delta.navigate true
+  git config --global delta.light false 
+  git config --global merge.conflictStyle "diff3"
+  git config --global diff.colorMoved "default"
+  git config --global delta.side-by-side true
+}
+
+setupFzf() {
+  echo -e "\n============================="
+  echo -e "Setting up Git Delta"
+  echo -e "=============================\n"
+  $(brew --prefix)/opt/fzf/install
+}
+
 installLibraries
 setupZsh
 setupLf
 setupStarship
+setupDelta
+setupFzf
 configureTmux

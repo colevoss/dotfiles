@@ -87,7 +87,8 @@ function M.setup()
   end
 
   remap.nmap("<leader>?", builtin.oldfiles, "Telescope: Recently Opened Files", true)
-  remap.nmap("<leader>ff", project_files, "Telescope: Find files", true)
+  remap.nmap("<leader>ft", project_files, "Telescope: Find files", true)
+  remap.nmap("<leader>ff", builtin.find_files, "Telescope: Find files", true)
   remap.nmap("<leader>p", quick_find_files, "Telescope: Quick find files (without preview)", true)
   -- remap.nmap("gr", builtin.lsp_references, "Telescope: LSP References", true)
   remap.nmap("<leader>gi", incoming_lsp_calls, "Telescope: LSP Incoming Calls", true)
@@ -98,6 +99,7 @@ function M.setup()
   remap.nmap("<leader>fs", builtin.treesitter, "Telescope: LSP Symbols", true)
   remap.nmap("<leader>tr", builtin.resume, "Telescope: Resume", true)
   remap.nmap("<leader>tk", builtin.keymaps, "Telescope: Keymaps", true)
+  remap.nmap("<leader>th", builtin.highlights, "Telescope: Keymaps", true)
 end
 
 return M

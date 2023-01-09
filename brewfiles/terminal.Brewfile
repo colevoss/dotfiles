@@ -13,8 +13,20 @@ brew "bottom"
 # @see https://the.exa.website/
 brew "exa"
 
+# Simple, fast and user-friendly alternative to find
+# @see https://github.com/sharkdp/fd
+brew "fd"
+
+# Command-line fuzzy finder written in Go
+# @see https://github.com/junegunn/fzf
+brew "fzf"
+
 # Distributed revision control system
 brew "git"
+
+# Syntax-highlighting pager for git and diff output
+# @see https://github.com/dandavison/delta
+brew "git-delta"
 
 # Lightweight and flexible command-line JSON processor
 brew "jq"

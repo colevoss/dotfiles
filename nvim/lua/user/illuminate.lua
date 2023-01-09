@@ -8,7 +8,9 @@ function M.setup()
     return
   end
 
-  illuminate.configure {}
+  illuminate.configure {
+    under_cursor = false,
+  }
 end
 
 return M

@@ -24,6 +24,18 @@ function M.setup()
       enable = true,
       update_cwd = false,
     },
+    live_filter = {
+      prefix = "F",
+      always_show_folders = false,
+    },
+    ignore_ft_on_setup = {
+      "gitcommit",
+    },
+    filters = {
+      custom = {
+        "^.git$",
+      }
+    },
     hijack_directories = {
       enable = true,
       auto_open = true,
@@ -53,7 +65,7 @@ function M.setup()
     renderer = {
       root_folder_modifier = ":t",
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "package.json" },
-      highlight_opened_files = 'icon',
+      highlight_opened_files = 'all',
       indent_markers = {
         enable = true,
         icons = {

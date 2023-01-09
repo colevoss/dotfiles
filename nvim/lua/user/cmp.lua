@@ -31,7 +31,8 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local has_words_before = function()
-  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
@@ -46,7 +47,7 @@ function M.setup()
     return
   end
 
-  require("luasnip/loaders/from_vscode").lazy_load()
+  require("luasnip.loaders.from_vscode").lazy_load()
 
   cmp.setup {
     snippet = {
@@ -55,6 +56,7 @@ function M.setup()
       end
     },
     window = {
+      completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
@@ -67,50 +69,67 @@ function M.setup()
           fallback()
         end
       end,
+      ["<CR>"] = cmp.mapping({
+        i = cmp.mapping.confirm({ behavior = cmp.mapping.close(), c = cmp.mapping.close() }),
+        c = function(fallback)
+          if cmp.visible() then
+            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+          else
+            fallback()
+          end
+        end
+      }),
       ["<C-e>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ['<Tab>'] = function(fallback)
-        if not cmp.select_next_item() then
-          if vim.bo.buftype ~= 'prompt' and has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
+      ['<Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
         end
-      end,
-
-      ['<S-Tab>'] = function(fallback)
-        if not cmp.select_prev_item() then
-          if vim.bo.buftype ~= 'prompt' and has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
+      end, { "i", "s" }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
         end
-      end,
+      end, { "i", "s" }),
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { "abbr", "kind", "menu" },
       format = function(entry, vim_item)
-        -- Kind icons
-        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-        vim_item.menu = ({
-          nvim_lsp = "[Lang]",
-          nvim_lua = "[NVM_LUA]",
-          luasnip = "[Snip]",
-          buffer = "[Buff]",
-          path = "[Path]",
+        -- local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+        -- local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        --
+        -- kind.kind = " " .. (strings[1] or "") .. " "
+        -- kind.menu = "    (" .. (strings[2] or "") .. ")"
+        --
+        -- return kind
+        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+
+        vim_item.menu = " " .. ({
+          nvim_lsp = "(lang)",
+          nvim_lua = "(NVM_LUA)",
+          luasnip = "(snip)",
+          buffer = "(buff)",
+          path = "(path)",
         })[entry.source.name]
         return vim_item
       end,
     },
     sources = {
       { name = "nvim_lsp" },
-      { name = "nvm_lua" },
       { name = "luasnip" },
+      { name = "nvm_lua" },
       { name = "buffer" },
       { name = "path" },
     },

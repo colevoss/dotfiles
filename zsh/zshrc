@@ -15,21 +15,6 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
-# completions
-# zmodload zsh/complist
-# autoload -Uz compinit; compinit
-# zstyle ':completion:*' completer _extensions _complete _approximate
-# zstyle ':completion:*' menu select
-# zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
-# zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
-# zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-# zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-# zstyle ':completion:*' group-name ''
-# zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions commands
-# zstyle ':completion:*' file-list all
-# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-# _comp_options+=(globdots)		# Include hidden files.
-
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^v' edit-command-line
@@ -44,32 +29,26 @@ autoload -U add-zsh-hook
 
 # Source environemtn variables from each file
 # in $DOTFILES/vars that has a .vars.sh file name
-echo -e "Loading vars from:"
 for file in $ZSH_CONFIG/vars/**/*.vars.zsh; do
-  echo -e "  -> ${file}"
   source ${file}
 done
 
 # Source aliases from each file
 # in $DOTFILES/aliases that has a .alias.sh file name
-echo -e "Loading aliases from:"
 for file in $ZSH_CONFIG/aliases/**/*.alias.zsh; do
-  echo -e "  -> ${file}"
   source ${file}
 done
 
-echo -e "Loading plugins from:"
 for file in $ZSH_CONFIG/plugins/**/*.plugin.zsh; do
-  echo -e "  -> ${file}"
   source ${file}
 done
 
-echo -e "Loading bindings from:"
 for file in $ZSH_CONFIG/bindings/**/*.bindings.zsh; do
-  echo -e "  -> ${file}"
   source ${file}
 done
 
 # Keep this at the bottom
 source $ZSH_PLUGIN_DIR/dracula/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

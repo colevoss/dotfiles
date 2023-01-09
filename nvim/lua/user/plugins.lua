@@ -66,14 +66,17 @@ return packer.startup(function()
   -- TreeSitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'nvim-treesitter/playground',
+    },
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   }
 
-  use {
-    'nvim-treesitter/nvim-treesitter-context'
-  }
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter-context'
+  -- }
 
   -- LSP
   use {
@@ -101,6 +104,7 @@ return packer.startup(function()
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim'
     }
   }
 
@@ -113,12 +117,20 @@ return packer.startup(function()
     }
   }
 
+  -- use {
+  --   'ibhagwan/fzf-lua'
+  -- }
+
   -- Lualine
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
-      'nvim-tree/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons',
     }
+  }
+
+  use {
+    'rebelot/heirline.nvim'
   }
 
   -- Trouble
@@ -163,6 +175,10 @@ return packer.startup(function()
 
   use {
     'rcarriga/nvim-notify'
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua'
   }
 
   if packer_bootstrap then

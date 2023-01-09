@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_DIR=$HOME/dotfiles_test
+DOTFILES_DIR=$HOME/dotfiles
 
 set -e
 

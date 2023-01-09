@@ -161,6 +161,9 @@ function M.setup()
   end
 
   fidget.setup {
+    window = {
+      winblend = 0
+    },
     text = {
       spinner = "dots",
     },

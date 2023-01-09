@@ -13,6 +13,12 @@ function M.setup()
   }
 
   vim.notify = notify
+
+  local telescope_ok, telescope = pcall(require, 'telescope')
+
+  if telescope_ok then
+    telescope.load_extension('notify')
+  end
 end
 
 return M

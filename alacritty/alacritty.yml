@@ -3,9 +3,9 @@ live_config_reload: true
 import:
   - ~/.config/alacritty/dracula.yml
 
-# env:
-#   TERM: 'screen-256color'
-# TERM variable
+env:
+  TERM: 'screen-256color'
+  # TERM: 'xterm-256color'
 #
 # This value is used to set the `$TERM` environment variable for
 # each instance of Alacritty. If it is not present, alacritty will
@@ -13,8 +13,8 @@ import:
 # available, otherwise `xterm-256color` is used.
 
 window:
-  # opacity: 0.95
   opacity: 0.98
+  # opacity: 0.8
   padding:
     x: 8
     y: 8
@@ -28,19 +28,19 @@ font:
   # use_thin_strokes: true
   normal:
     family: Hack Nerd Font Mono
-    style: Regular
+    # style: Regular
 
-  bold:
-    family: Hack Nerd Font Mono
-    style: Bold
-
-  italic:
-    family: Hack Nerd Font Mono
-    style: Italic
-
-  bold_italic:
-    family: Hack Nerd Font Mono
-    style: Bold Italic
+  # bold:
+  #   family: Hack Nerd Font Mono
+  #   # style: Bold
+  #
+  # italic:
+  #   family: Hack Nerd Font Mono
+  #   # style: Italic
+  #
+  # bold_italic:
+  #   family: Hack Nerd Font Mono
+    # style: Bold Italic
 
   # Point size
   size: 12.0

@@ -39,7 +39,10 @@ function M.setup()
         enable = true,
         disable = { "yaml" }
       }
-    }
+    },
+    -- playground = {
+    --   enable = true
+    -- }
   }
 
   -- local ts_context_ok, ts_context = pcall(require, 'treesitter-context')
