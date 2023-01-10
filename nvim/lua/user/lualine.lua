@@ -202,7 +202,8 @@ function M.setup()
   lualine.setup({
     options = {
       icons_enabled = true,
-      theme = theme,
+      -- theme = theme,
+      theme = 'nvimpire',
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt", "Trouble" },

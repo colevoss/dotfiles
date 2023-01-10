@@ -28,6 +28,7 @@ font:
   # use_thin_strokes: true
   normal:
     family: Hack Nerd Font Mono
+    # family: FiraCode Nerd Font Mono
     # style: Regular
 
   # bold:

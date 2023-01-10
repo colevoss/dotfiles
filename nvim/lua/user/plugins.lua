@@ -52,7 +52,9 @@ return packer.startup(function()
   use { 'wbthomason/packer.nvim' }
 
   -- Theme
-  use { 'dracula/vim' }
+  -- use { 'colevoss/nvimpire' }
+  use '~/codes/neovim/nvimpire'
+  -- use { 'dracula/vim' }
 
   -- Nvim Tree
   use { 'nvim-tree/nvim-web-devicons' }

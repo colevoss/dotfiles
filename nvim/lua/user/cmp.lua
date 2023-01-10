@@ -139,12 +139,12 @@ function M.setup()
     },
   }
 
-  cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    source = cmp.config.sources({
-      { name = 'buffer' },
-    })
-  })
+  -- cmp.setup.cmdline({ '/', '?' }, {
+  --   mapping = cmp.mapping.preset.cmdline(),
+  --   source = cmp.config.sources({
+  --     { name = 'buffer' },
+  --   })
+  -- })
 end
 
 return M

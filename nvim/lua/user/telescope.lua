@@ -48,12 +48,13 @@ function M.setup()
   }
 
   local project_files = function(pf_opts)
-    vim.fn.system("git rev-parse --is-inside-work-tree")
-    if vim.v.shell_error == 0 then
-      builtin.git_files(pf_opts)
-    else
-      builtin.find_files(pf_opts)
-    end
+    -- vim.fn.system("git rev-parse --is-inside-work-tree")
+    -- if vim.v.shell_error == 0 then
+    --   builtin.git_files(pf_opts)
+    -- else
+    --   builtin.find_files(pf_opts)
+    -- end
+    builtin.find_files(pf_opts)
   end
 
   local quick_find_files = function()

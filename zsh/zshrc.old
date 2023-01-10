@@ -1,0 +1,77 @@
+export DOTFILES="$HOME/dotfiles"
+export ZSH_CONFIG="$DOTFILES/zsh"
+export ZSH_PLUGIN_DIR="$HOME/.zsh"
+
+
+# HISTFILE=~/.zsh_history
+# setopt appendhistory
+
+# some useful options (man zshoptions)
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_verify
+# setopt inc_append_history
+
+unsetopt HIST_BEEP
+
+# Share your history across all your terminal windows
+setopt share_history
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+
+stty stop undef		# Disable ctrl-s to freeze terminal.
+zle_highlight=('paste:none')
+
+# beeping is annoying
+unsetopt BEEP
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^v' edit-command-line
+
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+autoload -U add-zsh-hook
+
+# Source environemtn variables from each file
+# in $DOTFILES/vars that has a .vars.sh file name
+for file in $ZSH_CONFIG/vars/**/*.vars.zsh; do
+  source ${file}
+done
+
+# Source aliases from each file
+# in $DOTFILES/aliases that has a .alias.sh file name
+for file in $ZSH_CONFIG/aliases/**/*.alias.zsh; do
+  source ${file}
+done
+
+for file in $ZSH_CONFIG/plugins/**/*.plugin.zsh; do
+  source ${file}
+done
+
+for file in $ZSH_CONFIG/bindings/**/*.bindings.zsh; do
+  source ${file}
+done
+
+# Keep this at the bottom
+source $ZSH_PLUGIN_DIR/dracula/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
+source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

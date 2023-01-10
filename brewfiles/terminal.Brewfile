@@ -56,3 +56,5 @@ brew "tree"
 # Nerdfonts
 # @see https://www.nerdfonts.com/
 cask "font-hack-nerd-font"
+cask "font-iosevka-nerd-font"
+cask "font-fira-code-nerd-font"

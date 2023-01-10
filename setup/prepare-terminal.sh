@@ -19,6 +19,8 @@ configureTmux() {
   echo -e "Linking dotfiles tmux.conf..."
   ln -s -f -v $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 
+  $HOME/dotfiles/setup/fix-tmux-italics.sh
+
   echo -e "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   echo -e "Remember to press \"prefix\" + I to install plugins"
   echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
@@ -37,22 +39,7 @@ setupZsh() {
   echo -e "\nLinking dotfiles zshrc..."
   ln -s -f -v $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
 
-  echo -e "\nDownloading ZSH Syntax Highlighting...\n"
-  rm -rf $HOME/.zsh/zsh-syntax-highlighting
-  git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-  git clone https://github.com/dracula/zsh-syntax-highlighting.git $HOME/.zsh/dracula/zsh-syntax-highlighting
-
-  # Auto suggestions
-  echo -e "\nDownloading ZSH Autosuggestions...\n"
-  rm -rf $HOME/.zsh/zsh-autosuggestions
-  git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
-
-  echo -e "\nDownloading ZSH Completions...\n"
-  rm -rf $HOME/.zsh/zsh-completions
-  git clone https://github.com/zsh-users/zsh-completions.git $HOME/.zsh/zsh-completions
-
   mkdir -p $HOME/.zsh/custom-completions
-
   fpath=($HOME/.zsh/zsh-completions/src $fpath)
   fpath=($HOME/.zsh/custom-completions $fpath)
 
