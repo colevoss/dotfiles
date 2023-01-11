@@ -8,7 +8,6 @@ local Nav = {
     return navic.is_available()
   end,
   provider = function()
-    print('navic run')
     return navic.get_location()
   end,
   update = "CursorMoved"
@@ -19,8 +18,8 @@ local WinBar = {
   -- {
   --   confition = function()
   --     return conditions.buffer_matches({
-  --       buftype = { "nofile", "prompt", "help", "quickfix" },
-  --       filetype = { "^git.*", "fugitive" },
+  --       buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
+  --       filetype = { "^git.*", "fugitive", "NvimTree" },
   --     })
   --   end,
   --   init = function()

@@ -9,7 +9,7 @@ local WorkDir = {
     bg = colors.bg_lighter,
     -- bold = true
   },
-  helpers.Space(),
+  helpers.Space(2),
   {
     init = function(self)
       self.cwd = vim.fn.getcwd(0)
@@ -22,10 +22,10 @@ local WorkDir = {
         cwd = vim.fn.pathshorten(self.cwd)
       end
 
-      return cwd
+      return " " .. cwd
     end,
   },
-  helpers.Space(),
+  helpers.Space(2),
 }
 
 return WorkDir
