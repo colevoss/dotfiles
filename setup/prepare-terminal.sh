@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 function installLibraries() {
-  brew bundle --file $HOME/dotfiles/brewfiles/terminal.Brewfile
+  # brew bundle --file $HOME/dotfiles/brewfiles/terminal.Brewfile
+  $HOME/dotfiles/setup/install-terminal-stuff.sh
 }
 
 configureTmux() {

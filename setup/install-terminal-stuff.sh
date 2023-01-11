@@ -21,6 +21,7 @@ installTerminalStuff() {
       starship \
       tmux \
       tree \
+      wez/wezterm/wezterm
 
   brew install --cask \
     font-hack-nerd-font

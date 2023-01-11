@@ -4,6 +4,7 @@ local LspActive = require('user.heirline.lsp')
 local WorkDir = require('user.heirline.cwd')
 local Git = require('user.heirline.git')
 local Diagnostics = require('user.heirline.diagnostics')
+local Winbar = require('user.heirline.winbar')
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire').colors
 
@@ -34,7 +35,8 @@ function M.setup()
   }
 
   heirline.setup({
-    statusline = StatusLine
+    statusline = StatusLine,
+    winbar = Winbar,
   })
 end
 

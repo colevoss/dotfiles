@@ -24,7 +24,8 @@ installCasks() {
       soundsource \
       spotify \
       visual-studio-code \
-      vlc
+      vlc \
+      wezterm
 
   # Install manico from app store
   mas install 724472954

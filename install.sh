@@ -61,8 +61,7 @@ if promptYn "Install Apps?"; then
 fi
 
 if promptYn "Setup Terminal?"; then
-  # $DOTFILES_DIR/setup/prepare-terminal.sh
-  $DOTFILES_DIR/setup/install-terminal-stuff.sh
+  $DOTFILES_DIR/setup/prepare-terminal.sh
 fi
 
 if promptYn "Install Node?"; then

@@ -11,12 +11,15 @@ local WorkDir = {
   },
   helpers.Space(),
   {
-    provider = function()
-      local cwd = vim.fn.getcwd(0)
-      cwd = vim.fn.fnamemodify(cwd, ":t")
+    init = function(self)
+      self.cwd = vim.fn.getcwd(0)
+    end,
+    provider = function(self)
+      -- local cwd = vim.fn.getcwd(0)
+      local cwd = vim.fn.fnamemodify(self.cwd, ":t")
 
       if not conditions.width_percent_below(#cwd, 0.25) then
-        cwd = vim.fn.pathshorten(cwd)
+        cwd = vim.fn.pathshorten(self.cwd)
       end
 
       return cwd

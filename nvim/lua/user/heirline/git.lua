@@ -12,7 +12,7 @@ local Git = {
   helpers.Space(),
   {
     {
-      provider = function(self)
+      provider = function()
         return " " .. vim.b.gitsigns_status_dict.head
       end
     },
