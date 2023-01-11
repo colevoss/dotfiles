@@ -5,7 +5,8 @@ installGo() {
   echo -e "Installing Go"
   echo -e "=============================\n"
 
-  brew bundle --file $HOME/dotfiles/brewfiles/go.Brewfile
+  # brew bundle --file $HOME/dotfiles/brewfiles/go.Brewfile
+  brew install go
 }
 
 installGoPls() {

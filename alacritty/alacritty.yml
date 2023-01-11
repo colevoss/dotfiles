@@ -13,8 +13,8 @@ env:
 # available, otherwise `xterm-256color` is used.
 
 window:
-  opacity: 0.98
-  # opacity: 0.8
+  # opacity: 0.98
+  opacity: 0.85
   padding:
     x: 8
     y: 8
@@ -49,7 +49,7 @@ font:
 
   # glyph_offset:
   #   x: 0
-  #   y: 0
+  #   y: 10
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

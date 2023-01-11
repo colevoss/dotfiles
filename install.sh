@@ -56,11 +56,13 @@ if promptYn "Clone Repo?"; then
 fi
 
 if promptYn "Install Apps?"; then
-  $DOTFILES_DIR/setup/install-apps.sh
+  # $DOTFILES_DIR/setup/install-apps.sh
+  $DOTFILES_DIR/setup/install-stuff.sh
 fi
 
 if promptYn "Setup Terminal?"; then
-  $DOTFILES_DIR/setup/prepare-terminal.sh
+  # $DOTFILES_DIR/setup/prepare-terminal.sh
+  $DOTFILES_DIR/setup/install-terminal-stuff.sh
 fi
 
 if promptYn "Install Node?"; then

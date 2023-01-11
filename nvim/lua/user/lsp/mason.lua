@@ -18,7 +18,8 @@ function M.lsp_keymaps(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ctions')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
+  -- IDEA: Load telescope functions with a fallback on vim.lsp functions
+  -- nmap('gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
   nmap('gI', vim.lsp.buf.implementation, '[G]o to [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('K', vim.lsp.buf.hover, 'Hover documentation')
@@ -38,6 +39,7 @@ function M.lsp_keymaps(_, bufnr)
   local telescope_ok, telescope = pcall(require, 'telescope.builtin')
 
   if telescope_ok then
+    nmap('gd', telescope.lsp_definitions, '[G]o to [D]efinitions')
     nmap('gr', telescope.lsp_references, '[G]o to [R]eferences')
     nmap('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')

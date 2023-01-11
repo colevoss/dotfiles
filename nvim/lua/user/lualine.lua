@@ -1,70 +1,6 @@
 local M = {}
 
-local colors = {
-  -- background
-  bg = '#282A36',
-  bg_light = '#343746',
-  bg_lighter = '#424450',
-  bg_dark = '#21222C',
-  bg_darker = '#191A21',
-
-  -- foreground
-  fg = '#F8F8F2',
-
-  -- current line & selection
-  selection = '#44475A',
-  current_line = '#44475A',
-  subtle = '#424450',
-  -- comment
-  comment = '#6272A4',
-
-  cyan = '#8BE9FD',
-  green = '#50FA7B',
-  orange = '#FFB86C',
-  pink = '#FF79C6',
-  purple = '#BD93F9',
-  red = '#FF5555',
-  yellow = '#F1FA8C',
-
-  -- ANSI
-  color_0  = '#21222C',
-  color_1  = '#FF5555',
-  color_2  = '#50FA7B',
-  color_3  = '#F1FA8C',
-  color_4  = '#BD93F9',
-  color_5  = '#FF79C6',
-  color_6  = '#8BE9FD',
-  color_7  = '#F8F8F2',
-  color_8  = '#6272A4',
-  color_9  = '#FF6E6E',
-  color_10 = '#69FF94',
-  color_11 = '#FFFFA5',
-  color_12 = '#D6ACFF',
-  color_13 = '#FF92DF',
-  color_14 = '#A4FFFF',
-  color_15 = '#FFFFFF',
-
-  none = 'NONE',
-}
-
-local theme = {
-  normal = {
-    a = { fg = colors.fg, bg = colors.none },
-    b = { fg = colors.fg, bg = colors.bg_light },
-    c = { fg = colors.fg, bg = colors.bg_dark },
-    x = { fg = colors.fg, bg = colors.bg_dark },
-    y = { fg = colors.fg, bg = colors.bg_darker },
-    z = { fg = colors.fg, bg = colors.bg_darker },
-  },
-  inactive = {
-    a = { fg = colors.comment, bg = colors.none },
-    b = { fg = colors.comment, bg = colors.bg_darker },
-    c = { fg = colors.comment, bg = colors.bg_dark },
-    x = { fg = colors.comment, bg = colors.bg_dark },
-    y = { fg = colors.comment, bg = colors.bg_darker },
-    z = { fg = colors.comment, bg = colors.bg_darker },
-  }
-}
+local colors = require('nvimpire').colors
 
 local diagnostics = {
   "diagnostics",
@@ -78,13 +14,13 @@ local diagnostics = {
 }
 
 local mode_colors = {
-  n = '#bd93f9', -- purple
-  i = '#50fa7b', -- green
-  v = '#8be9fd', -- cyan
-  [' '] = '#8be9fd', -- cyan
-  V = '#8be9fd', -- cyan
-  c = '#ffb86c', -- pink
-  no = '#bd93f9',
+  n = colors.purple,
+  i = colors.green,
+  v = colors.cyan,
+  [' '] = colors.cyan,
+  V = colors.cyan,
+  c = colors.orange,
+  no = colors.purple,
 }
 
 local mode = {
