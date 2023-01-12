@@ -6,7 +6,7 @@ require("user.plugins")
 require("user.options").setup()
 require("user.vim-keymaps").setup()
 
-require('user.notify').setup()
+-- require('user.notify').setup()
 
 -- Plugin setups
 require("user.colorscheme").setup()

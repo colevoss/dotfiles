@@ -6,8 +6,9 @@ fpath=($HOME/.zsh/custom-completions $fpath)
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 
-zmodload zsh/complist
-autoload -Uz compinit; compinit
+# This is done in the main zshrc
+# zmodload zsh/complist
+# autoload -Uz compinit; compinit
 
 # Speed up autocomplete, force prefix mapping
 zstyle ':completion:*' verbose yes

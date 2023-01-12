@@ -175,9 +175,9 @@ return packer.startup(function()
     }
   }
 
-  use {
-    'rcarriga/nvim-notify'
-  }
+  -- use {
+  --   'rcarriga/nvim-notify'
+  -- }
 
   use {
     'norcalli/nvim-colorizer.lua'

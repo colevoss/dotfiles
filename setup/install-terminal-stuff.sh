@@ -6,22 +6,24 @@ installTerminalStuff() {
   brew tap homebrew/cask-fonts
 
   brew install \
-      bat \
-      bottom \
-      exa \
-      fd \
-      fzf \
-      git \
-      git-delta \
-      jq \
-      lazygit \
-      lf \
-      neovim \
-      ripgrep \
-      starship \
-      tmux \
-      tree \
-      wez/wezterm/wezterm
+    awscli \
+    bat \
+    bottom \
+    exa \
+    fd \
+    fzf \
+    git \
+    git-delta \
+    jq \
+    lazygit \
+    lf \
+    neovim \
+    pulumi/tap/pulumi \
+    python \
+    ripgrep \
+    starship \
+    tmux \
+    tree
 
   brew install --cask \
     font-hack-nerd-font

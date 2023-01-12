@@ -1,6 +1,9 @@
 export DOTFILES="$HOME/dotfiles"
 export ZSH_CONFIG_DIR="$DOTFILES/zsh"
 
+zmodload zsh/complist
+autoload -Uz compinit; compinit
+
 source "$ZSH_CONFIG_DIR/loader.zsh"
 
 setopt autocd extendedglob nomatch menucomplete

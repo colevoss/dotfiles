@@ -3,7 +3,6 @@ local remap = require('user.util.remap')
 local M = {}
 
 function M.setup()
-  local keymap = vim.keymap.set
   local telescope_ok, telescope = pcall(require, "telescope")
 
   if not telescope_ok then
@@ -42,10 +41,6 @@ function M.setup()
 
   local builtin = require('telescope.builtin')
   local themes = require('telescope.themes')
-
-  local opts = {
-    silent = true
-  }
 
   local project_files = function(pf_opts)
     -- vim.fn.system("git rev-parse --is-inside-work-tree")

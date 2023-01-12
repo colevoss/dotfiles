@@ -24,6 +24,7 @@ function M.lsp_keymaps(_, bufnr)
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('K', vim.lsp.buf.hover, 'Hover documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature documentation')
+  nmap('<leader>gl', vim.diagnostic.open_float, 'Open Diagnostic float for line under cursor')
 
   -- Create a command `:Format` local to the lsp buffer
   vim.api.nvim_buf_create_user_command(
@@ -52,12 +53,12 @@ end
 function M.setup_navic(client, bufnr)
   -- Navic
   local navic_ok, navic = pcall(require, 'nvim-navic')
-  if navic_ok then
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
-  else
+  if not navic_ok then
     vim.notify('Could not load nvim-navic for lsp on attach')
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
   end
 end
 

@@ -11,7 +11,7 @@ local LspActive = {
 
     local current_buff = vim.api.nvim_get_current_buf()
     for _, client in pairs(vim.lsp.get_active_clients({ bufnr = self.bufnr })) do
-      print(vim.inspect(client.messages))
+      -- print(vim.inspect(client.messages))
       table.insert(names, client.name)
     end
 

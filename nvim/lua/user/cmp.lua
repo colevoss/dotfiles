@@ -28,9 +28,9 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local has_words_before = function()
+  ---@diagnostic disable-next-line: deprecated
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -96,7 +96,7 @@ function M.setup()
       end, { "i", "s" }),
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
+          cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
@@ -107,13 +107,6 @@ function M.setup()
     formatting = {
       fields = { "abbr", "kind", "menu" },
       format = function(entry, vim_item)
-        -- local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-        -- local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        --
-        -- kind.kind = " " .. (strings[1] or "") .. " "
-        -- kind.menu = "    (" .. (strings[2] or "") .. ")"
-        --
-        -- return kind
         vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 
         vim_item.menu = " " .. ({
@@ -138,13 +131,6 @@ function M.setup()
       select = false,
     },
   }
-
-  -- cmp.setup.cmdline({ '/', '?' }, {
-  --   mapping = cmp.mapping.preset.cmdline(),
-  --   source = cmp.config.sources({
-  --     { name = 'buffer' },
-  --   })
-  -- })
 end
 
 return M
