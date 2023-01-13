@@ -183,6 +183,10 @@ return packer.startup(function()
     'norcalli/nvim-colorizer.lua'
   }
 
+  use {
+    "fladson/vim-kitty"
+  }
+
   if packer_bootstrap then
     packer.sync()
   end

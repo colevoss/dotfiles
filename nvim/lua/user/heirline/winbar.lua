@@ -15,34 +15,6 @@ local Nav = {
 
 local WinBar = {
   fallthrough = false,
-  -- {
-  --   confition = function()
-  --     return conditions.buffer_matches({
-  --       buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-  --       filetype = { "^git.*", "fugitive", "NvimTree" },
-  --     })
-  --   end,
-  --   init = function()
-  --     vim.opt_local.winbar = nil
-  --   end
-  -- },
-  -- { -- A special winbar for terminals
-  --   condition = function()
-  --     return conditions.buffer_matches({ buftype = { "terminal" } })
-  --   end,
-  --   provider = "TERMINAL"
-  --   -- utils.surround({ "", "" }, "dark_red", {
-  --   --     FileType,
-  --   --     Space,
-  --   --     TerminalName,
-  --   -- }),
-  -- },
-  -- {
-  --   condition = function()
-  --     return not conditions.is_active()
-  --   end,
-  --   provider = "INACTGIVE"
-  -- },
   {
     FileName,
     helpers.Space(),

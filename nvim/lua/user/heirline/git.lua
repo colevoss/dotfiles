@@ -3,13 +3,13 @@ local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire.colors').colors
 
 local Git = {
-  condition = conditions.is_git_repo,
   hl = {
     fg = colors.purple,
     bg = colors.bg_light,
   },
   helpers.Space(2),
   {
+    condition = conditions.is_git_repo,
     {
       provider = function()
         return " " .. vim.b.gitsigns_status_dict.head
@@ -21,7 +21,6 @@ local Git = {
       end,
       provider = function()
         local count = vim.b.gitsigns_status_dict.added or 0
-        -- return count > 0 and (" +" .. count)
         return count > 0 and ("  " .. count)
 
       end,
@@ -36,7 +35,6 @@ local Git = {
       end,
       provider = function()
         local count = vim.b.gitsigns_status_dict.changed or 0
-        -- return count > 0 and (" ~" .. count)
         return count > 0 and ("  " .. count)
       end,
       hl = {
@@ -58,7 +56,8 @@ local Git = {
       }
     },
     helpers.Space(2),
-  }
+  },
+  helpers.RightSeparator(colors.bg_light)
 }
 
 return Git

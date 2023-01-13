@@ -7,7 +7,7 @@ local WorkDir = {
   hl = {
     fg = colors.fg,
     bg = colors.bg_lighter,
-    -- bold = true
+    bold = true
   },
   helpers.Space(2),
   {
@@ -15,17 +15,17 @@ local WorkDir = {
       self.cwd = vim.fn.getcwd(0)
     end,
     provider = function(self)
-      -- local cwd = vim.fn.getcwd(0)
       local cwd = vim.fn.fnamemodify(self.cwd, ":t")
 
       if not conditions.width_percent_below(#cwd, 0.25) then
         cwd = vim.fn.pathshorten(self.cwd)
       end
 
-      return " " .. cwd
+      return " " .. cwd
     end,
   },
   helpers.Space(2),
+  helpers.RightSeparator(colors.bg_lighter, colors.bg_light)
 }
 
 return WorkDir

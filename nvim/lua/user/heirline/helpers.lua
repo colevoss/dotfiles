@@ -34,4 +34,29 @@ M.RightSeparator = function(fg, bg)
   }
 end
 
+M.LeftBubbleSeperator = function(fg, bg)
+  bg = bg or colors.none
+  return {
+    provider = "",
+    hl = {
+      fg = fg,
+      bg = bg
+    }
+  }
+end
+
+M.RightBubbleSeperator = function(fg, bg)
+  bg = bg or colors.none
+  return {
+    provider = "",
+    hl = {
+      fg = fg,
+      bg = bg
+    }
+  }
+end
+
+-- 
+-- 
+
 return M

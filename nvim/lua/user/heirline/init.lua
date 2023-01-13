@@ -24,13 +24,15 @@ function M.setup()
 
   local StatusLine = {
     -- VimMode, Space, FileName, Git, Align,
+    -- VimMode, WorkDir, helpers.RightSeparator(colors.bg_lighter, colors.bg_light), Git, Align,
     VimMode, WorkDir, Git, Align,
     -- FileName,
     -- WorkDir, Align,
     Diagnostics, Space(), LspActive,
 
     hl = {
-      bg = colors.bg_dark,
+      -- bg = colors.bg_dark,
+      bg = colors.none,
     }
   }
 

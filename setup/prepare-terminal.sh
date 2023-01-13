@@ -101,6 +101,20 @@ setupFzf() {
   $(brew --prefix)/opt/fzf/install
 }
 
+setupAlacritty() {
+  echo "==================================="
+  echo "========= Setting up Alacritty ========="
+  echo "==================================="
+  ln -s $HOME/dotfiles/alacritty $HOME/.config/alacritty
+}
+
+setupKitty() {
+  echo "==================================="
+  echo "========= Setting up Alacritty ========="
+  echo "==================================="
+  ln -s $HOME/dotfiles/kitty $HOME/.config/kitty
+}
+
 installLibraries
 setupZsh
 setupLf
@@ -108,3 +122,5 @@ setupStarship
 setupDelta
 setupFzf
 configureTmux
+setupAlacritty
+setupKitty
