@@ -1,5 +1,5 @@
 local conditions = require('heirline.conditions')
-local utils = require('heirline.utils')
+-- local utils = require('heirline.utils')
 local colors = require('nvimpire.colors').colors
 local helpers = require('user.heirline.helpers')
 
@@ -10,10 +10,16 @@ local null_ls_map = {
 
 local LspActive = {
   condition = conditions.lsp_attached,
-  update = { 'LspAttach', 'LspDetach', 'BufEnter' },
-  helpers.LeftBubbleSeperator(colors.purple),
   {
-
+    hl = function(self)
+      return {
+        fg = colors.bg_lighter,
+        bg = self.show_diagnostics and colors.bg_light or colors.none
+      }
+    end,
+    provider = helpers.LeftBubbleChar,
+  },
+  {
     provider = function()
       local names = {}
 
@@ -34,39 +40,14 @@ local LspActive = {
         end
       end
 
-      return "ﯶ " .. table.concat(names, ", ")
+      return "ﯶ " .. table.concat(names, ", ") .. " "
     end,
     hl = {
-      fg = colors.bg,
-      bg = colors.purple,
+      fg = colors.purple,
+      bg = colors.bg_lighter,
       bold = true
     },
-  },
-  helpers.RightBubbleSeperator(colors.purple),
-}
---
-local LspProgress = {
-  condition = conditions.lsp_attached,
-  update = { "User", pattern = { 'LspProgressUpdate', 'LspRequest' } },
-
-  provider = function(self)
-    local progress = vim.lsp.util.get_progress_messages()[1]
-    if not progress then
-      return ""
-    end
-
-    local perc = progress.percentage or 0
-
-    return "prog: " .. perc .. (progress.title or '')
-  end,
-  hl = {
-    fg = colors.comment,
   },
 }
 
 return LspActive
-
--- return {
---   LspActive,
---   LspProgress
--- }

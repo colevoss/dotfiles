@@ -1,6 +1,7 @@
-local M = {}
-
 local colors = require('nvimpire').colors
+local helpers = require('user.heirline.helpers')
+
+local M = {}
 
 M.mode_names = {
   n = "N",
@@ -56,6 +57,7 @@ M.mode_colors = {
 }
 
 M.VimMode = {
+  update = { "ModeChanged" },
   init = function(self)
     self.mode = vim.fn.mode(1)
     -- Can we use an augroup?
@@ -68,9 +70,11 @@ M.VimMode = {
       self.once = true
     end
   end,
+
   provider = function(self)
     return " %-0.2(" .. M.mode_names[self.mode] .. "%) "
   end,
+
   hl = function(self)
     local mode = self.mode:sub(1, 1)
 
@@ -80,8 +84,16 @@ M.VimMode = {
       bold = true
     }
   end,
-  update = {
-    "ModeChanged",
+  {
+    provider = helpers.RightBubbleChar,
+    hl = function(self)
+      local mode = self.mode:sub(1, 1)
+      return {
+        fg = colors[M.mode_colors[mode]],
+        bg = colors.bg_lighter,
+        bold = true
+      }
+    end
   }
 }
 

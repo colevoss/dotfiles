@@ -1,11 +1,10 @@
 local conditions = require('heirline.conditions')
-local utils = require('heirline.utils')
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire.colors').colors
 
 local WorkDir = {
   hl = {
-    fg = colors.fg,
+    fg = colors.purple,
     bg = colors.bg_lighter,
     bold = true
   },

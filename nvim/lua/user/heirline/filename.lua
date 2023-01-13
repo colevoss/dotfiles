@@ -1,27 +1,32 @@
 local conditions = require('heirline.conditions')
-local utils = require('heirline.utils')
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire.colors').colors
 
-local FileNameBlock = {
-  init = function(self)
-    self.filename = vim.api.nvim_buf_get_name(0)
+local Left = {
+  condition = conditions.is_active,
+  provider = "",
+  hl = function(self)
+    return {
+      bg = self.none,
+      fg = self.bg,
+    }
+  end
+}
 
-    if conditions.is_git_repo() then
-      local added = vim.b.gitsigns_status_dict.added or 0 ~= 0
-      local changed = vim.b.gitsigns_status_dict.changed or 0 ~= 0
-      local removed = vim.b.gitsigns_status_dict.removed or 0 ~= 0
+local Right = {
+  condition = conditions.is_active,
+  provider = "",
+  hl = function(self)
+    return {
+      bg = self.none,
+      fg = self.bg,
+    }
+  end
+}
 
-      self.git_highlight = added or changed or removed
-    end
-
-    self.errors = 0
-    self.warnings = 0
-
-    if conditions.has_diagnostics() then
-      self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-      self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-    end
+local FileTags = {
+  provider = function()
+    return vim.bo.modified and ' ' or ' '
   end
 }
 
@@ -34,11 +39,6 @@ local FileIcon = {
   provider = function(self)
     return self.icon and (self.icon .. " ")
   end,
-  hl = function(self)
-    return {
-      fg = self.icon_color
-    }
-  end
 }
 
 local FileName = {
@@ -60,38 +60,69 @@ local FileName = {
 
     return filename
   end,
-  -- make italic if not active
-  hl = function(self)
-    local fg = colors.fg
+}
+
+local FileNameBlock = {
+  init = function(self)
+    self.filename = vim.api.nvim_buf_get_name(0)
+
+    self.git_highlight = false
+    if conditions.is_git_repo() then
+      ---@diagnostic disable-next-line: undefined-field
+      local added = (vim.b.gitsigns_status_dict.added or 0) ~= 0
+      ---@diagnostic disable-next-line: undefined-field
+      local changed = (vim.b.gitsigns_status_dict.changed or 0) ~= 0
+      ---@diagnostic disable-next-line: undefined-field
+      local removed = (vim.b.gitsigns_status_dict.removed or 0) ~= 0
+
+      self.git_highlight = added or changed or removed
+    end
+
+    self.errors = 0
+    self.warnings = 0
+    self.has_diagnostics = false
+
+    if conditions.has_diagnostics() then
+      self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+      self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+      self.has_diagnostics = self.errors ~= 0 or self.warnings ~= 0
+    end
+
+    local active = conditions.is_active()
+    local bg = active and colors.fg or colors.none
+    local fg = active and colors.bg or colors.fg
+
+    -- print(self.git_highlight)
 
     if self.git_highlight then
-      fg = colors.green
+      bg = active and colors.cyan or bg
+      fg = active and colors.bg or colors.cyan
     end
 
     if self.errors > 0 then
-      fg = colors.red
+      bg = active and colors.red or bg
+      fg = active and colors.bg or fg
     elseif self.warnings > 0 then
-      fg = colors.orange
+      bg = active and colors.orange or bg
+      fg = active and colors.bg or fg
     end
 
-    return {
-      fg = fg,
-      italic = not conditions.is_active(),
-    }
+    self.bg = bg
+    self.fg = fg
   end,
+  Left,
+  {
+    hl = function(self)
+      return {
+        fg = self.fg,
+        bg = self.bg,
+      }
+    end,
+    FileIcon,
+    FileName,
+    FileTags,
+  },
+  Right,
 }
-
-local FileTags = {
-  provider = function()
-    return vim.bo.modified and '' or ' '
-  end
-}
-
-FileNameBlock = utils.insert(FileNameBlock,
-  FileIcon,
-  FileName,
-  helpers.Space(),
-  FileTags
-)
 
 return FileNameBlock

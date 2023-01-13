@@ -14,9 +14,16 @@ M.Space = function(n)
   }
 end
 
+M.RightSeparatorChar = ""
+M.LeftSeparatorChar = ""
+
+M.RightBubbleChar = ""
+M.LeftBubbleChar = ""
+
+
 M.LeftSeparator = function(color)
   return {
-    provider = "",
+    provider = M.LeftSeparatorChar,
     hl = {
       fg = color,
     }
@@ -26,7 +33,7 @@ end
 M.RightSeparator = function(fg, bg)
   bg = bg or colors.none
   return {
-    provider = "",
+    provider = M.RightBubbleChar,
     hl = {
       fg = fg,
       bg = bg,
@@ -37,7 +44,7 @@ end
 M.LeftBubbleSeperator = function(fg, bg)
   bg = bg or colors.none
   return {
-    provider = "",
+    provider = M.LeftBubbleChar,
     hl = {
       fg = fg,
       bg = bg
@@ -48,7 +55,7 @@ end
 M.RightBubbleSeperator = function(fg, bg)
   bg = bg or colors.none
   return {
-    provider = "",
+    provider = M.RightBubbleChar,
     hl = {
       fg = fg,
       bg = bg

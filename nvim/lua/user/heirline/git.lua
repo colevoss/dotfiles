@@ -4,7 +4,7 @@ local colors = require('nvimpire.colors').colors
 
 local Git = {
   hl = {
-    fg = colors.purple,
+    fg = colors.cyan,
     bg = colors.bg_light,
   },
   helpers.Space(2),
@@ -12,14 +12,18 @@ local Git = {
     condition = conditions.is_git_repo,
     {
       provider = function()
+        ---@diagnostic disable-next-line: undefined-field
         return " " .. vim.b.gitsigns_status_dict.head
       end
     },
+    helpers.Space(),
     {
       condition = function()
+        ---@diagnostic disable-next-line: undefined-field
         return vim.b.gitsigns_status_dict.added or 0 ~= 0
       end,
       provider = function()
+        ---@diagnostic disable-next-line: undefined-field
         local count = vim.b.gitsigns_status_dict.added or 0
         return count > 0 and ("  " .. count)
 
@@ -31,9 +35,11 @@ local Git = {
     },
     {
       condition = function()
+        ---@diagnostic disable-next-line: undefined-field
         return vim.b.gitsigns_status_dict.changed or 0 ~= 0
       end,
       provider = function()
+        ---@diagnostic disable-next-line: undefined-field
         local count = vim.b.gitsigns_status_dict.changed or 0
         return count > 0 and ("  " .. count)
       end,
@@ -44,9 +50,11 @@ local Git = {
     },
     {
       condition = function()
+        ---@diagnostic disable-next-line: undefined-field
         return vim.b.gitsigns_status_dict.removed or 0 ~= 0
       end,
       provider = function()
+        ---@diagnostic disable-next-line: undefined-field
         local count = vim.b.gitsigns_status_dict.removed or 0
         return count > 0 and ("  " .. count)
       end,

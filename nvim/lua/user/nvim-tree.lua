@@ -90,6 +90,7 @@ function M.setup()
             symlink_open = "",
           },
           git = {
+            modified = "",
             unstaged = "",
             staged = "S",
             unmerged = "",

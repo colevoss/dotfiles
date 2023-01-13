@@ -17,8 +17,10 @@ local WinBar = {
   fallthrough = false,
   {
     FileName,
-    helpers.Space(),
+    -- helpers.Space(),
+    helpers.Align,
     Nav,
+    helpers.Space(2),
   }
 }
 

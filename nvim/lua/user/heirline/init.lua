@@ -1,9 +1,10 @@
 local VimMode = require('user.heirline.mode').VimMode
-local FileName = require('user.heirline.filename')
+-- local FileName = require('user.heirline.filename')
 local LspActive = require('user.heirline.lsp')
 local WorkDir = require('user.heirline.cwd')
 local Git = require('user.heirline.git')
 local Diagnostics = require('user.heirline.diagnostics')
+local LspDiagnostics = require('user.heirline.lsp_diagnostics')
 local Winbar = require('user.heirline.winbar')
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire').colors
@@ -28,7 +29,13 @@ function M.setup()
     VimMode, WorkDir, Git, Align,
     -- FileName,
     -- WorkDir, Align,
-    Diagnostics, Space(), LspActive,
+    -- {
+    --   hl = {
+    --     bg = colors.bg_light
+    --   },
+    --   Diagnostics, Space(), LspActive,
+    -- },
+    LspDiagnostics,
 
     hl = {
       -- bg = colors.bg_dark,
