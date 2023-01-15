@@ -21,7 +21,7 @@ bootstrapStatusLine() {
 styleWindows() {
   sep_style="#[bg=default,fg=${comment},nobold,noitalics,nounderscore]"
   tmux setw -g window-status-format "#[fg=${comment},bg=default] #I #W "
-  tmux setw -g window-status-current-format "${sep_style}${left_bubble}#[bg=${comment},fg=${white},bold] #I #W ${sep_style}${right_bubble}"
+  tmux setw -g window-status-current-format "${sep_style}${left_bubble}#[bg=${comment},fg=${dark_gray},bold] #I #W ${sep_style}${right_bubble}"
 }
 
 stylePaneBorder() {
@@ -40,8 +40,8 @@ statusLeft() {
 statusRight() {
   tmux set-option -g status-right ""
 
-  tmux set-option -ag status-right "#[fg=${green},bg=default,nobold,noitalics,nounderscore]${left_sep}#[fg=${dark_gray},bg=${green},bold] cpu: #{cpu_percentage}"
-  tmux set-option -ag status-right " #[fg=${green},bg=${cyan},nobold,noitalics,nounderscore]#[bg=${cyan}]#[fg=${dark_gray},bg=${cyan},bold] ram: #{ram_percentage} "
+  tmux set-option -ag status-right "#[fg=${purple},bg=default,nobold,noitalics,nounderscore]${left_bubble}#[fg=${dark_gray},bg=${purple},bold] cpu: #{cpu_percentage}"
+  tmux set-option -ag status-right " #[fg=${gray},bg=${purple},nobold,noitalics,nounderscore]${left_bubble}#[bg=${gray}]#[fg=${purple},bg=${gray},bold] ram: #{ram_percentage} "
 }
 
 bootstrapColors() {

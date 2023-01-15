@@ -1,9 +1,6 @@
-local conditions = require('heirline.conditions')
-local FileName = require('user.heirline.filename')
-local helpers = require('user.heirline.helpers')
 local navic = require('nvim-navic')
 
-local Nav = {
+local WinBar = {
   condition = function()
     return navic.is_available()
   end,
@@ -11,17 +8,6 @@ local Nav = {
     return navic.get_location()
   end,
   update = "CursorMoved"
-}
-
-local WinBar = {
-  fallthrough = false,
-  {
-    FileName,
-    -- helpers.Space(),
-    helpers.Align,
-    Nav,
-    helpers.Space(2),
-  }
 }
 
 vim.api.nvim_create_autocmd("User", {

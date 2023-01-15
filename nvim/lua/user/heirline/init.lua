@@ -1,11 +1,9 @@
 local VimMode = require('user.heirline.mode').VimMode
--- local FileName = require('user.heirline.filename')
-local LspActive = require('user.heirline.lsp')
 local WorkDir = require('user.heirline.cwd')
 local Git = require('user.heirline.git')
-local Diagnostics = require('user.heirline.diagnostics')
 local LspDiagnostics = require('user.heirline.lsp_diagnostics')
 local Winbar = require('user.heirline.winbar')
+local Bufferline = require('user.heirline.bufferline')
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire').colors
 
@@ -46,7 +44,10 @@ function M.setup()
   heirline.setup({
     statusline = StatusLine,
     winbar = Winbar,
+    tabline = Bufferline,
   })
+
+  vim.o.showtabline = 2
 end
 
 return M

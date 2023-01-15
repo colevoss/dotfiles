@@ -1,4 +1,4 @@
-local conditions = require('heirline.conditions')
+local conditions = require('heirline.conditions');
 local helpers = require('user.heirline.helpers')
 local colors = require('nvimpire.colors').colors
 
@@ -82,6 +82,8 @@ local FileNameBlock = {
     self.warnings = 0
     self.has_diagnostics = false
 
+    local bufnr = vim.fn.bufnr()
+
     if conditions.has_diagnostics() then
       self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
       self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
@@ -92,8 +94,6 @@ local FileNameBlock = {
     local bg = active and colors.fg or colors.none
     local fg = active and colors.bg or colors.fg
 
-    -- print(self.git_highlight)
-
     if self.git_highlight then
       bg = active and colors.cyan or bg
       fg = active and colors.bg or colors.cyan
@@ -101,10 +101,10 @@ local FileNameBlock = {
 
     if self.errors > 0 then
       bg = active and colors.red or bg
-      fg = active and colors.bg or fg
+      fg = active and colors.bg or colors.red
     elseif self.warnings > 0 then
       bg = active and colors.orange or bg
-      fg = active and colors.bg or fg
+      fg = active and colors.bg or colors.orange
     end
 
     self.bg = bg
@@ -116,6 +116,7 @@ local FileNameBlock = {
       return {
         fg = self.fg,
         bg = self.bg,
+        bold = true,
       }
     end,
     FileIcon,

@@ -14,6 +14,9 @@ function M.setup()
   local git_focus_cmd = "Neotree focus git_status right"
 
   neotree.setup({
+    source_selector = {
+      winbar = true,
+    },
     close_if_last_window = true,
     popup_border_style = "rounded",
     enable_git_status = true,
@@ -41,7 +44,8 @@ function M.setup()
         ["<esc>"] = "revert_preview",
         ["P"] = { "toggle_preview", config = { use_float = true } },
         -- ["l"] = "focus_preview",
-        ["v"] = "open_vsplit",
+        -- ["<C-h>"] = "open_split",
+        ["<C-v>"] = "open_vsplit",
         ["a"] = "add",
         ["d"] = "delete",
         ["r"] = "rename",
@@ -70,14 +74,24 @@ function M.setup()
 
     filesystem = {
       filtered_items = {
-        visible = true,
+        -- visible = true,
+        visible = false,
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_hidden = true,
+
+        hide_by_pattern = {
+          ".git",
+        },
+
+        never_show = {
+          ".DS_Store",
+        },
       },
 
       follow_current_file = true,
-      hijack_netrw_behavior = "open_default",
+      -- hijack_netrw_behavior = "open_default",
+      hijack_netrw_behavior = "open_current",
 
       window = {
         mappings = {
