@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-/bin/bash -c "$(TODO)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/colevoss/dotfiles/master/install.sh)"
 ```
 
 ## Included
@@ -13,6 +13,10 @@
 ### Neovim
 
 Amazing Neovim Setup
+
+### Tmux
+
+Custom Tmux theme and configuration
 
 ### Zsh
 
