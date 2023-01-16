@@ -170,7 +170,10 @@ return packer.startup(function()
   }
 
   use {
-    'numToStr/Comment.nvim'
+    'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
   }
 
   use {

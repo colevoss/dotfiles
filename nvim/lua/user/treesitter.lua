@@ -9,16 +9,34 @@ function M.setup()
   end
 
   configs.setup {
+    context_commentstring = {
+      enable = true
+    },
     ensure_installed = {
       "lua",
-      "go",
+      "help",
+      "bash",
+      "markdown",
+
+      "gitcommit",
+      "gitignore",
+
       "typescript",
       "tsx",
       "html",
       "graphql",
+      "css",
+
+      "toml",
+      "json",
+      "yaml",
+
+      "go",
       "rust",
-      "help",
-      "json"
+      "python",
+
+      "dockerfile",
+      "terraform",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
