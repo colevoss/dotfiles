@@ -4,7 +4,7 @@ local colors = require('nvimpire.colors').colors
 
 local Left = {
   condition = conditions.is_active,
-  provider = "",
+  provider = helpers.LeftBubbleChar,
   hl = function(self)
     return {
       bg = self.none,
@@ -15,7 +15,7 @@ local Left = {
 
 local Right = {
   condition = conditions.is_active,
-  provider = "",
+  provider = helpers.RightBubbleChar,
   hl = function(self)
     return {
       bg = self.none,
@@ -81,8 +81,6 @@ local FileNameBlock = {
     self.errors = 0
     self.warnings = 0
     self.has_diagnostics = false
-
-    local bufnr = vim.fn.bufnr()
 
     if conditions.has_diagnostics() then
       self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })

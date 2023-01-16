@@ -12,11 +12,13 @@ function M.setup()
     ensure_installed = {
       "lua",
       "go",
-      "javascript",
       "typescript",
+      "tsx",
+      "html",
       "graphql",
       "rust",
-      "help"
+      "help",
+      "json"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -33,7 +35,7 @@ function M.setup()
       -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
       -- Using this option may slow down your editor, and you may see some duplicate highlights.
       -- Instead of true it can also be a list of languages
-      -- additional_vim_regex_highlighting = false,
+      additional_vim_regex_highlighting = false,
 
       indent = {
         enable = true,
@@ -43,6 +45,15 @@ function M.setup()
     -- playground = {
     --   enable = true
     -- }
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn", -- set to `false` to disable one of the mappings
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
+    },
   }
 
   -- local ts_context_ok, ts_context = pcall(require, 'treesitter-context')

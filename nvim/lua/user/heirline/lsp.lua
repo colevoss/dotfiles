@@ -1,5 +1,4 @@
 local conditions = require('heirline.conditions')
--- local utils = require('heirline.utils')
 local colors = require('nvimpire.colors').colors
 local helpers = require('user.heirline.helpers')
 

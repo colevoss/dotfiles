@@ -88,7 +88,6 @@ local FilenameBlock = {
     --
     --   self.git_highlight = added or changed or removed
     -- end
-
     -- if self.git_highlight then
     --   bg = self.is_active and colors.cyan or bg
     --   fg = self.is_active and colors.bg or colors.cyan
