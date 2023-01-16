@@ -93,15 +93,8 @@ local FilenameBlock = {
     --   fg = self.is_active and colors.bg or colors.cyan
     -- end
 
-    self.errors = 0
-    self.warnings = 0
-    self.has_diagnostics = false
-
-    if conditions.has_diagnostics() then
-      self.errors = #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.ERROR })
-      self.warnings = #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.WARN })
-      self.has_diagnostics = self.errors ~= 0 or self.warnings ~= 0
-    end
+    self.errors = #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.ERROR }) or 0
+    self.warnings = #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.WARN }) or 0
 
     if self.errors > 0 then
       bg = self.is_active and colors.red or bg
