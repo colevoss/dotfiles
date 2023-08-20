@@ -5,10 +5,12 @@ installTerminalStuff() {
 
   brew tap homebrew/cask-fonts
 
+
   brew install \
     awscli \
     bat \
     bottom \
+    chruby \
     exa \
     fd \
     fzf \
@@ -21,12 +23,15 @@ installTerminalStuff() {
     pulumi/tap/pulumi \
     python \
     ripgrep \
+    ruby-install \
     starship \
+    stats \
     tmux \
     tree
 
   brew install --cask \
-    font-hack-nerd-font
+    font-hack-nerd-font \
+    dotnet-sdk
 }
 
 installTerminalStuff

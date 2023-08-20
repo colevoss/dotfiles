@@ -9,9 +9,11 @@ installCasks() {
       # amethyst \
   brew install --cask \
       1password \
+      1password/tap/1password-cli \
       alacritty \
       discord \
       docker \
+      firefox \
       fork \
       google-chrome \
       kitty \
@@ -20,6 +22,7 @@ installCasks() {
       obs \
       obsidian \
       postman \
+      raycast \
       slack \
       soundsource \
       spotify \

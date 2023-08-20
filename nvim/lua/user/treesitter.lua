@@ -34,6 +34,7 @@ function M.setup()
       "go",
       "rust",
       "python",
+      "ruby",
 
       "dockerfile",
       "terraform",
