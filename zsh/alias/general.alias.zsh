@@ -18,4 +18,3 @@ alias df="cd $HOME/dotfiles"
 alias home="cd $HOME"
 
 alias ndf="nvim $HOME/dotfiles"
-

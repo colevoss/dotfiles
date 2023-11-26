@@ -55,3 +55,13 @@ load_plugin "zsh-users/zsh-syntax-highlighting"
 load_plugin "zsh-users/zsh-history-substring-search"
 
 load_plugin "$ZSH_CONFIG_DIR/plugins/zsh-history-substring-search.zsh"
+
+# # opam configuration
+# [[ ! -r /Users/colevoss/.opam/opam-init/init.zsh ]] || source /Users/colevoss/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# bun completions
+# [ -s "/Users/colevoss/.bun/_bun" ] && source "/Users/colevoss/.bun/_bun"
+
+# bun
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
