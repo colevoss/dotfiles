@@ -1,2 +1,2 @@
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="kitty"

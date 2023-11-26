@@ -1,3 +1,0 @@
-local tsserver = {}
-
-return tsserver

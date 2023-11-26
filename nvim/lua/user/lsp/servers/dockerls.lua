@@ -1,3 +1,0 @@
-local dockerls = {}
-
-return dockerls

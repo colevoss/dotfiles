@@ -1,3 +1,0 @@
-local bashls = {}
-
-return bashls

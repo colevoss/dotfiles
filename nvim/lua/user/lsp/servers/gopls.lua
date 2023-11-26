@@ -1,3 +1,0 @@
-local gopls = {}
-
-return gopls
