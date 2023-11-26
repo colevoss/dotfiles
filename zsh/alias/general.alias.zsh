@@ -1,5 +1,3 @@
-alias ls='ls --color=tty'
-
 # alias lg='lazygit'
 
 alias dv="$HOME/dotfiles/scripts/dev-time.sh"
