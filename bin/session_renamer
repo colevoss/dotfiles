@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ -z $TERM ]]; then
+  echo "Not in a tmux session"
+  exit 0
+fi
+
+current_dir=$(pwd)
+new_name=$(basename $current_dir | tr . _)
+
+tmux rename-session $new_name
