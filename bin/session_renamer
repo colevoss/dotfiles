@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -z $TERM ]]; then
+if [[ -z $TERM_PROGRAM ]]; then
   echo "Not in a tmux session"
   exit 0
 fi
