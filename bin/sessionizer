@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
+if [[ -z "$SESSIONIZER_DIRS" ]]; then
+  echo "Error: SESSIONIZER_DIRS is not set."
+  exit 1
+fi
+
+prefix=$HOME
+
+IFS=","
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/codes -mindepth 1 -maxdepth 1 -type d | fzf)
+  read -ra DIRS <<< "$SESSIONIZER_DIRS"
+  selected=$(find -L "${DIRS[@]}" -mindepth 1 -maxdepth 1 -type d | sed -e "s@^$prefix@@" | sed 's@[^/]$@&/@' | fzf)
 fi
 
 if [[ -z $selected ]]; then
