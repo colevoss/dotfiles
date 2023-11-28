@@ -40,7 +40,9 @@ if promptYn "Clone Repo?"; then
   git clone --progress git@github.com:colevoss/dotfiles.git $DOTFILES_DIR
 fi
 
-$DOTFILES_DIR/installs/brew.sh
+if promptYn "Install Homebrew?"; then
+  $DOTFILES_DIR/installs/brew.sh
+fi
 
 if promptYn "Install Utils?"; then
   $DOTFILES_DIR/installs/utils.sh

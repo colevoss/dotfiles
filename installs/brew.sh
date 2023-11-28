@@ -3,17 +3,17 @@
 installHomebrew() {
   if ! command -v brew >/dev/null
   then
-    if promptYn "Install Homebrew?"; then
-      echo "Installing Homebrew"
+    echo -e "\n============================="
+    echo -e "Installing Homebrew"
+    echo -e "=============================\n"
 
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-      echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zprofile
-      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-      eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
-      exec zsh
-    fi
+    exec zsh
   fi
 }
 
