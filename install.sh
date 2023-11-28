@@ -81,7 +81,7 @@ if promptYn "Install Neovim?"; then
 fi
 
 if promptYn "Install Node?"; then
-  $DOTFILES_DIR/installs/git-delta.sh
+  $DOTFILES_DIR/installs/node.sh
 fi
 
 if promptYn "Install Go?"; then
