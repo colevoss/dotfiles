@@ -38,7 +38,7 @@ echo ""
 if promptYn "Clone Repo?"; then
   rm -rf $DOTFILES_DIR
   # git clone --progress git@github.com:colevoss/dotfiles.git $DOTFILES_DIR
-  git clone --progress https://github.com/colevoss/neovoss.git $DOTFILES_DIR
+  git clone --progress https://github.com/colevoss/dotfiles.git $DOTFILES_DIR
 fi
 
 if promptYn "Install Homebrew?"; then
