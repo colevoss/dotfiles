@@ -9,7 +9,7 @@ installTerminalUtils() {
   brew install \
     bat \
     bottom \
-    exa \
+    eza \
     git \
     jq \
     ripgrep \
