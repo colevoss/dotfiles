@@ -96,7 +96,7 @@ setupDelta() {
 
 setupFzf() {
   echo -e "\n============================="
-  echo -e "Setting up Git Delta"
+  echo -e "Setting up FZF"
   echo -e "=============================\n"
   $(brew --prefix)/opt/fzf/install
 }
@@ -122,5 +122,5 @@ setupStarship
 setupDelta
 setupFzf
 configureTmux
-setupAlacritty
+# setupAlacritty
 setupKitty

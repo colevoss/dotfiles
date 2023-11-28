@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DOTFILES_DIR=$HOME/dotfiles
 
@@ -22,7 +22,7 @@ promptYn() {
 }
 
 if [[ ! -n $(xcode-select -p 1>/dev/null;  echo $?) ]]; then
-  echo "HAVEN INSTALLED Dev tools"
+  # echo "Dev Tools is not installed"
 
   abort """
   Dev tools is not installed.
@@ -30,21 +30,6 @@ if [[ ! -n $(xcode-select -p 1>/dev/null;  echo $?) ]]; then
   or download from Apple's website:
   Download XCode from Apple's Website: https://developer.apple.com/xcode/
   """
-fi
-
-if ! command -v brew >/dev/null
-then
-  if promptYn "Install Homebrew?"; then
-    echo "Installing Homebrew"
-
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    exec zsh
-  fi
 fi
 
 echo "Cloning dotfiles repo"
@@ -55,27 +40,68 @@ if promptYn "Clone Repo?"; then
   git clone --progress git@github.com:colevoss/dotfiles.git $DOTFILES_DIR
 fi
 
-if promptYn "Install Apps?"; then
-  # $DOTFILES_DIR/setup/install-apps.sh
-  $DOTFILES_DIR/setup/install-stuff.sh
+$DOTFILES_DIR/installs/brew.sh
+
+if promptYn "Install Utils?"; then
+  $DOTFILES_DIR/installs/utils.sh
 fi
 
-if promptYn "Install Terminal Stuff?"; then
-  $DOTFILES_DIR/setup/install-terminal-stuff.sh
+if promptYn "Install Fonts?"; then
+  $DOTFILES_DIR/installs/fonts.sh
 fi
 
-if promptYn "Setup Terminal?"; then
-  $DOTFILES_DIR/setup/prepare-terminal.sh
+if promptYn "Install FZF?"; then
+  $DOTFILES_DIR/installs/fzf.sh
+fi
+
+if promptYn "Install Git Delta?"; then
+  $DOTFILES_DIR/installs/git-delta.sh
+fi
+
+if promptYn "Setup ZSH?"; then
+  $DOTFILES_DIR/installs/setup-zsh.sh
+fi
+
+if promptYn "Install kitty?"; then
+  $DOTFILES_DIR/installs/kitty.sh
+fi
+
+if promptYn "Install Tmux?"; then
+  $DOTFILES_DIR/installs/tmux.sh
+fi
+
+if promptYn "Install Starship?"; then
+  $DOTFILES_DIR/installs/starship.sh
+fi
+
+if promptYn "Install Neovim?"; then
+  $DOTFILES_DIR/installs/neovim.sh
 fi
 
 if promptYn "Install Node?"; then
-  $DOTFILES_DIR/setup/setup-node.sh
-fi
-
-if promptYn "Install Rust?"; then
-  $DOTFILES_DIR/setup/install-rust.sh
+  $DOTFILES_DIR/installs/git-delta.sh
 fi
 
 if promptYn "Install Go?"; then
-  $DOTFILES_DIR/setup/install-go.sh
+  $DOTFILES_DIR/installs/go.sh
+fi
+
+if promptYn "Install Rust?"; then
+  $DOTFILES_DIR/installs/rust.sh
+fi
+
+if promptYn "Install Ocaml?"; then
+  $DOTFILES_DIR/installs/ocaml.sh
+fi
+
+if promptYn "Install Terraform?"; then
+  $DOTFILES_DIR/installs/terraform.sh
+fi
+
+if promptYn "Install Docker?"; then
+  $DOTFILES_DIR/installs/docker.sh
+fi
+
+if promptYn "Install VSCode?"; then
+  $DOTFILES_DIR/installs/vscode.sh
 fi

@@ -12,7 +12,7 @@ installOcaml() {
 
 initOcaml() {
   echo -e "\n============================="
-  echo -e "Installing Ocaml"
+  echo -e "Initializing Ocaml"
   echo -e "=============================\n"
 
   ocaml init
