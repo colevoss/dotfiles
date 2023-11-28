@@ -107,3 +107,7 @@ fi
 if promptYn "Install VSCode?"; then
   $DOTFILES_DIR/installs/vscode.sh
 fi
+
+if promptYn "Install Some Apps?"; then
+  $DOTFILES_DIR/installs/apps.sh
+fi
