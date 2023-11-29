@@ -92,6 +92,14 @@ if promptYn "Install Rust?"; then
   $DOTFILES_DIR/installs/rust.sh
 fi
 
+if promptYn "Install Python?"; then
+  $DOTFILES_DIR/installs/python.sh
+fi
+
+if promptYn "Install PipEnv?"; then
+  $DOTFILES_DIR/installs/pipenv.sh
+fi
+
 if promptYn "Install Ocaml?"; then
   $DOTFILES_DIR/installs/ocaml.sh
 fi
@@ -111,3 +119,4 @@ fi
 if promptYn "Install Some Apps?"; then
   $DOTFILES_DIR/installs/apps.sh
 fi
+
