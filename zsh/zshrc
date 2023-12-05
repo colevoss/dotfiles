@@ -56,4 +56,6 @@ load_plugin "zsh-users/zsh-history-substring-search"
 
 load_plugin "$ZSH_CONFIG_DIR/plugins/zsh-history-substring-search.zsh"
 
+# [[ ! -r /Users/colevoss/.opam/opam-init/init.zsh ]] || source /Users/colevoss/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 export PATH="$DOTFILES/bin:$PATH"
