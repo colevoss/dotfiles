@@ -24,7 +24,6 @@ action=$(jq ".[$action_index].action" -r <<< "$actions")
 cancel=$(jq ".[$action_index].cancel" -r <<< "$actions")
 clear=$(jq ".[$action_index].clear" -r <<< "$actions")
 
-
 while read id top bottom left right active;
 do
   ((pane_count+=1))
@@ -53,14 +52,14 @@ fi
 command=()
 
 if [[ "$cancel" = true ]]; then
-  command+=('C-c')
+  command+=('C-c') # Ctrl c
 fi
 
 if [[ "$clear" = true ]]; then
-  command+=('C-l')
+  command+=('C-l') # Ctrl l
 fi
 
 command+=("$action")
-command+=('C-m')
+command+=('C-m') # Enter
 
 tmux send-keys -t "$action_pane" "${command[@]}"
