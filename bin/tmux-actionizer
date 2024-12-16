@@ -31,7 +31,6 @@ do
 
   # Do not set to active pane
   if [[ "$active" = 1 ]]; then
-    echo "$id is active"
     continue
   fi
 
