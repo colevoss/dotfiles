@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+action_index="${1:-0}"
+
+cwd=$(pwd)
+action_dir="$cwd$ACTIONIZER_DIRNAME"
+action_file="$action_dir/actions.json"
+
+if [[ ! -d "$action_dir" ]]; then
+  exit 0
+fi
+
+if [[ ! -f "$action_file" ]]; then
+  echo "$action_dir/actions.json file not found"
+  exit 1
+fi
+
+# TODO: Manage the file better
+actions=$(cat "$action_file")
+action=$(jq ".[$action_index].action" -r <<< "$actions")
+cancel=$(jq ".[$action_index].cancel" -r <<< "$actions")
+clear=$(jq ".[$action_index].clear" -r <<< "$actions")
+
+# panes=$(tmux list-panes -F "#{window_index}.#{pane_index} #{pane_at_top} #{pane_at_bottom} #{pane_at_left} #{pane_at_right} #{pane_active}")
+pane_count=0
+
+action_pane=""
+
+while read id top bottom left right active;
+do
+  ((pane_count+=1))
+
+  # Do not set to active pane
+  if [[ "$active" = 1 ]]; then
+    echo "$id is active"
+    continue
+  fi
+
+  # Set to first in-active pane
+  if [[ -z "$action_pane" ]]; then
+    action_pane="$id"
+  fi
+# done < <(echo "$panes")
+done < <(tmux list-panes -F "#{window_index}.#{pane_index} #{pane_at_top} #{pane_at_bottom} #{pane_at_left} #{pane_at_right} #{pane_active}")
+
+if [[ "$pane_count" = 1 ]]; then
+  tmux split-window -v
+  action_pane=2
+elif [[ "$pane_count" -gt "2" ]]; then
+  action_pane="!"
+fi
+
+echo "$action_pane"
+
+command=()
+
+if [[ "$cancel" = true ]]; then
+  command+=('C-c')
+fi
+
+if [[ "$clear" = true ]]; then
+  command+=('C-l')
+fi
+
+command+=("$action")
+command+=('C-m')
+
+tmux send-keys -t "$action_pane" "${command[@]}"
