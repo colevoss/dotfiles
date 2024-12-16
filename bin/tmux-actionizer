@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
+# default action index to 0 otherwise its first arg
 action_index="${1:-0}"
 
 cwd=$(pwd)
 action_dir="$cwd$ACTIONIZER_DIRNAME"
 action_file="$action_dir/actions.json"
+pane_count=0
+action_pane=""
 
+# if directory doesnt exist, do nothing
 if [[ ! -d "$action_dir" ]]; then
   exit 0
 fi
@@ -15,16 +19,11 @@ if [[ ! -f "$action_file" ]]; then
   exit 1
 fi
 
-# TODO: Manage the file better
 actions=$(cat "$action_file")
 action=$(jq ".[$action_index].action" -r <<< "$actions")
 cancel=$(jq ".[$action_index].cancel" -r <<< "$actions")
 clear=$(jq ".[$action_index].clear" -r <<< "$actions")
 
-# panes=$(tmux list-panes -F "#{window_index}.#{pane_index} #{pane_at_top} #{pane_at_bottom} #{pane_at_left} #{pane_at_right} #{pane_active}")
-pane_count=0
-
-action_pane=""
 
 while read id top bottom left right active;
 do
@@ -40,17 +39,17 @@ do
   if [[ -z "$action_pane" ]]; then
     action_pane="$id"
   fi
-# done < <(echo "$panes")
 done < <(tmux list-panes -F "#{window_index}.#{pane_index} #{pane_at_top} #{pane_at_bottom} #{pane_at_left} #{pane_at_right} #{pane_active}")
 
+# Create new pane if only one pane
+# This doesnt work very well right now
 if [[ "$pane_count" = 1 ]]; then
   tmux split-window -v
   action_pane=2
 elif [[ "$pane_count" -gt "2" ]]; then
+  # use last active pane if more than 2 panes
   action_pane="!"
 fi
-
-echo "$action_pane"
 
 command=()
 
