@@ -56,6 +56,11 @@ load_plugin "zsh-users/zsh-history-substring-search"
 
 load_plugin "$ZSH_CONFIG_DIR/plugins/zsh-history-substring-search.zsh"
 
-# [[ ! -r /Users/colevoss/.opam/opam-init/init.zsh ]] || source /Users/colevoss/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r /Users/colevoss/.opam/opam-init/init.zsh ]] || source /Users/colevoss/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 export PATH="$DOTFILES/bin:$PATH"
+
+# bun completions
+[ -s "/Users/colevoss/.bun/_bun" ] && source "/Users/colevoss/.bun/_bun"
+
+[ -f "/Users/colevoss/.ghcup/env" ] && . "/Users/colevoss/.ghcup/env" # ghcup-env
