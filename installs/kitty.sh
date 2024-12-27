@@ -13,7 +13,7 @@ configureKitty() {
   echo -e "Configuring Kitty"
   echo -e "=============================\n"
 
-  ln -s $HOME/dotfiles/kitty $HOME/.config/kitty
+  ln -s $HOME/dotfiles/kitty $HOME/.config/kitty $
 }
 
 installKitty

@@ -1,0 +1,33 @@
+# theme
+
+theme = dracula
+background = 282c34
+foreground = f8f8f2
+
+background-opacity = 0.925
+background-blur-radius = 20
+
+# window
+
+title = " "
+macos-titlebar-style = hidden
+window-padding-x = 4
+window-padding-y = 4
+window-vsync = true
+
+mouse-hide-while-typing
+
+# font
+
+font-size = 12
+font-family = Hack Nerd Font Mono
+# font-family = FiraCode Nerd Font Mono
+font-thicken
+
+adjust-cell-height = 4
+adjust-underline-position = 2
+
+# cursor
+cursor-style = block
+cursor-style-blink = false
+
