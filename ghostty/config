@@ -1,33 +1,54 @@
-# theme
+# https://ghostty.org/docs/config/reference
 
+#===============================
+# General
+#===============================
+macos-option-as-alt = true
+
+#===============================
+# Theme
+#===============================
 theme = dracula
-background = 282c34
-foreground = f8f8f2
-
-background-opacity = 0.925
+background-opacity = 0.93
 background-blur-radius = 20
 
-# window
+#===============================
+# Window
+#===============================
 
 title = " "
 macos-titlebar-style = hidden
 window-padding-x = 4
-window-padding-y = 4
+window-padding-y = 2
 window-vsync = true
+mouse-hide-while-typing = true
 
-mouse-hide-while-typing
-
-# font
+#===============================
+# Font
+#===============================
 
 font-size = 12
-font-family = Hack Nerd Font Mono
-# font-family = FiraCode Nerd Font Mono
-font-thicken
-
+font-family = FiraCode Nerd Font Mono
+font-feature = -calt
+font-thicken = false
 adjust-cell-height = 4
 adjust-underline-position = 2
 
-# cursor
+#===============================
+# Cursor
+#===============================
+
 cursor-style = block
 cursor-style-blink = false
+shell-integration-features = no-cursor
+selection-invert-fg-bg = true
+adjust-cursor-thickness = 4
 
+#===============================
+# Icon
+#===============================
+
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = bd93f9
+macos-icon-screen-color = 44475a
